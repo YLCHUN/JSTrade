@@ -97,12 +97,14 @@ NSString* JSExportCallBack_encode(){
         NSString *isRetuen = self.signature.methodReturnLength>0?@"true":@"false";
         if (self.sel_model) {
             _scriptCode = [NSString stringWithFormat:@"%@: function() {\n\
-                           return window.%@.transfer(this.spaceName, '%@', arguments, %@);\n\
-                           }\n", self.jsFuncName, kJSExport_registerKey, self.jsFuncName, isRetuen];
+                           funcName = '%@';\n\
+                           return window.%@.transfer(this.spaceName, funcName, arguments, %@);\n\
+                           }\n", self.jsFuncName, self.jsFuncName, kJSExport_registerKey, isRetuen];
         }else {
             _scriptCode = [NSString stringWithFormat:@"function %@() {\n\
-                           return window.%@.transfer(funcName, '%@', arguments, %@);\n\
-                           }\n", self.jsFuncName, kJSExport_registerKey, self.jsFuncName, isRetuen];
+                           funcName = '%@';\n\
+                           return window.%@.transfer(funcName, funcName, arguments, %@);\n\
+                           }\n", self.jsFuncName, self.jsFuncName, kJSExport_registerKey, isRetuen];
         }
     }
     return _scriptCode;

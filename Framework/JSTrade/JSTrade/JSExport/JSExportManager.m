@@ -9,6 +9,7 @@
 #import "JSExportManager.h"
 #import "JSExportManager_Import.h"
 #import <objc/runtime.h>
+#import "JSTradeRuntime.h"
 #import "JSTradeCommon.h"
 #import <WebKit/WebKit.h>
 #import "NSMethodSignature+JSTrade.h"
@@ -328,26 +329,13 @@ void import_JSExportManager(void) {
 #pragma mark -
 #pragma mark - WKWebView_UIDelegate;
 
-void jsTrade_replaceMethod(Class class, SEL originSelector, SEL newSelector) {
-    Method oriMethod = class_getInstanceMethod(class, originSelector);
-    Method newMethod = class_getInstanceMethod(class, newSelector);
-    BOOL isAddedMethod = class_addMethod(class, originSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
-    if (isAddedMethod) {
-        class_replaceMethod(class, newSelector, method_getImplementation(oriMethod), method_getTypeEncoding(oriMethod));
-    } else {
-        method_exchangeImplementations(oriMethod, newMethod);
-    }
-}
-
 @implementation WKWebView (JSExport)
 +(void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Class class = [self class];
-        jsTrade_replaceMethod(class, @selector(setUIDelegate:), @selector(_setUIDelegate:));
-        jsTrade_replaceMethod(class, @selector(UIDelegate), @selector(_UIDelegate));
-        jsTrade_replaceMethod(class, @selector(initWithFrame:configuration:), @selector(_initWithFrame:configuration:));
-        
+        jsTrade_replaceMethod(self, @selector(setUIDelegate:), @selector(_setUIDelegate:));
+        jsTrade_replaceMethod(self, @selector(UIDelegate), @selector(_UIDelegate));
+        jsTrade_replaceMethod(self, @selector(initWithFrame:configuration:), @selector(_initWithFrame:configuration:));
     });
 }
 -(instancetype)_initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration {

@@ -37,6 +37,8 @@
 		A957DFB51F0B7F7A00939A4F /* JSTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = A957DF991F0B7F7A00939A4F /* JSTrade.m */; };
 		A9817B561F1E13D6005016A8 /* JSExportMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = A9817B541F1E13D6005016A8 /* JSExportMessage.h */; };
 		A9817B571F1E13D6005016A8 /* JSExportMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A9817B551F1E13D6005016A8 /* JSExportMessage.m */; };
+		A9817B5A1F1EFE2B005016A8 /* JSTradeRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A9817B581F1EFE2B005016A8 /* JSTradeRuntime.h */; };
+		A9817B5B1F1EFE2B005016A8 /* JSTradeRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A9817B591F1EFE2B005016A8 /* JSTradeRuntime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		A957DF991F0B7F7A00939A4F /* JSTrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTrade.m; sourceTree = "<group>"; };
 		A9817B541F1E13D6005016A8 /* JSExportMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSExportMessage.h; sourceTree = "<group>"; };
 		A9817B551F1E13D6005016A8 /* JSExportMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSExportMessage.m; sourceTree = "<group>"; };
+		A9817B581F1EFE2B005016A8 /* JSTradeRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTradeRuntime.h; sourceTree = "<group>"; };
+		A9817B591F1EFE2B005016A8 /* JSTradeRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTradeRuntime.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				A957DF7A1F0B7F7A00939A4F /* JSTradeCommon.h */,
+				A9817B581F1EFE2B005016A8 /* JSTradeRuntime.h */,
+				A9817B591F1EFE2B005016A8 /* JSTradeRuntime.m */,
 				A957DF7B1F0B7F7A00939A4F /* JSTradeSourceShield.h */,
 				A957DF7C1F0B7F7A00939A4F /* JSTradeSourceShield.m */,
 				A957DF7D1F0B7F7A00939A4F /* NSJSONSerialization+JSTrade.h */,
@@ -207,6 +213,7 @@
 				A957DFA11F0B7F7A00939A4F /* WKWebView+JSTrade.h in Headers */,
 				A957DF9A1F0B7F7A00939A4F /* JSTradeCommon.h in Headers */,
 				A957DFAC1F0B7F7A00939A4F /* JSExportScriptManager.h in Headers */,
+				A9817B5A1F1EFE2B005016A8 /* JSTradeRuntime.h in Headers */,
 				A957DF9D1F0B7F7A00939A4F /* NSJSONSerialization+JSTrade.h in Headers */,
 				A957DFA91F0B7F7A00939A4F /* JSExportMethod.h in Headers */,
 				A957DFA81F0B7F7A00939A4F /* JSExportManager_Import.h in Headers */,
@@ -306,6 +313,7 @@
 				A957DFA71F0B7F7A00939A4F /* JSExportModel.m in Sources */,
 				A957DFAD1F0B7F7A00939A4F /* JSExportScriptManager.m in Sources */,
 				A957DF9C1F0B7F7A00939A4F /* JSTradeSourceShield.m in Sources */,
+				A9817B5B1F1EFE2B005016A8 /* JSTradeRuntime.m in Sources */,
 				A957DFB01F0B7F7A00939A4F /* JSImportModel.m in Sources */,
 				A957DFAA1F0B7F7A00939A4F /* JSExportMethod.m in Sources */,
 				A957DFA21F0B7F7A00939A4F /* WKWebView+JSTrade.m in Sources */,
