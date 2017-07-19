@@ -38,16 +38,9 @@ typedef void(^JSExportCallBack) (id object);
 @interface JSExportModel : NSObject
 
 /**
- js调用代码 window.<#spaceName#>.func()
- */
-@property (nonatomic, readonly) NSString* spaceName;
-
-/**
  webView 弱引用，当JSExportProtocol函数被响应时候才会有值
  */
 @property (nonatomic, weak, readonly) WKWebView *webView;
-
-//-(instancetype)initWithSpaceName:(NSString*)name;
 
 - (id)unserializeJSON:(NSString *)jsonString toStringValue:(BOOL)toStringValue;
 
