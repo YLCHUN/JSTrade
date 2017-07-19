@@ -8,5 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-NSString * kJSExport_registerKey = @"_JSExportModel_";
+NSString * const kJSExport_registerKey = @"_JSExportModel_";
 

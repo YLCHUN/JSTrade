@@ -35,6 +35,8 @@
 		A957DFB31F0B7F7A00939A4F /* JSImportModel_Import.h in Headers */ = {isa = PBXBuildFile; fileRef = A957DF971F0B7F7A00939A4F /* JSImportModel_Import.h */; };
 		A957DFB41F0B7F7A00939A4F /* JSTrade.h in Headers */ = {isa = PBXBuildFile; fileRef = A957DF981F0B7F7A00939A4F /* JSTrade.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A957DFB51F0B7F7A00939A4F /* JSTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = A957DF991F0B7F7A00939A4F /* JSTrade.m */; };
+		A9817B561F1E13D6005016A8 /* JSExportMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = A9817B541F1E13D6005016A8 /* JSExportMessage.h */; };
+		A9817B571F1E13D6005016A8 /* JSExportMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A9817B551F1E13D6005016A8 /* JSExportMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		A957DF971F0B7F7A00939A4F /* JSImportModel_Import.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSImportModel_Import.h; sourceTree = "<group>"; };
 		A957DF981F0B7F7A00939A4F /* JSTrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTrade.h; sourceTree = "<group>"; };
 		A957DF991F0B7F7A00939A4F /* JSTrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTrade.m; sourceTree = "<group>"; };
+		A9817B541F1E13D6005016A8 /* JSExportMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSExportMessage.h; sourceTree = "<group>"; };
+		A9817B551F1E13D6005016A8 /* JSExportMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSExportMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,8 @@
 				A957DF8D1F0B7F7A00939A4F /* JSExportModel_Import.h */,
 				A957DF8E1F0B7F7A00939A4F /* JSExportScriptManager.h */,
 				A957DF8F1F0B7F7A00939A4F /* JSExportScriptManager.m */,
+				A9817B541F1E13D6005016A8 /* JSExportMessage.h */,
+				A9817B551F1E13D6005016A8 /* JSExportMessage.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 				A957DFB41F0B7F7A00939A4F /* JSTrade.h in Headers */,
 				A957DFA61F0B7F7A00939A4F /* JSExportModel.h in Headers */,
 				A957DFAF1F0B7F7A00939A4F /* JSImportModel.h in Headers */,
+				A9817B561F1E13D6005016A8 /* JSExportMessage.h in Headers */,
 				A957DFAE1F0B7F7A00939A4F /* JSImport.h in Headers */,
 				A957DFA31F0B7F7A00939A4F /* JSExport.h in Headers */,
 				A957DFA41F0B7F7A00939A4F /* JSExportManager.h in Headers */,
@@ -293,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9817B571F1E13D6005016A8 /* JSExportMessage.m in Sources */,
 				A957DFB51F0B7F7A00939A4F /* JSTrade.m in Sources */,
 				A957DFB21F0B7F7A00939A4F /* JSImportMethod.m in Sources */,
 				A957DFA71F0B7F7A00939A4F /* JSExportModel.m in Sources */,

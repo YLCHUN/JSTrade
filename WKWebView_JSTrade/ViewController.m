@@ -57,14 +57,14 @@
     WKUserScript *adjustScript = [[WKUserScript alloc] initWithSource:adjustString injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
     
     return adjustScript;
-    
 }
 
 - (void)jsExportSet {
     self.jsExport[@"ocModel"] = [[OCModel alloc] init];
     self.jsExport[@"ocModel1"] = [[OCModel1 alloc] init];
-    self.jsExport[@"jsHandler"] = ^(int i){
+    self.jsExport[@"jsHandler"] =  ^int(int i){
         NSLog(@"%d", i);
+        return 11;
     };
     self.jsExport[@"jsHandlerCB"] = ^(NSString *str, JSExportCallBack cb){
         NSLog(@"%@", str);
@@ -95,5 +95,12 @@
     
     [self presentViewController:alertController animated:YES completion:^{}];
 }
+
+
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable result))completionHandler {
+    NSLog(@"prompt %@",prompt);
+    completionHandler(@"");
+}
+
 
 @end

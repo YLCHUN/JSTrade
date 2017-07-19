@@ -19,5 +19,13 @@
  */
 + (id)unserializeJSON:(NSString *)jsonString toStringValue:(BOOL)toStringValue;
 
+/**
+ 对象转JSON字符串
+
+ @param dictOrArr <#dictOrArr description#>
+ @return json
+ */
++ (NSString*)serializeDictOrArr:(id)dictOrArr;
+
 @end
 void import_NSJSONSerialization_JSTrade(void);

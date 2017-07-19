@@ -10,7 +10,7 @@
 #import <JSTrade/JSExport.h>
 
 @protocol OCModelProtocol <JSExportProtocol>
--(void)func0;
+-(NSNumber*)func0;
 -(void)func1:(id)p;
 -(void)func2:(JSExportCallBack)cb;
 //-(void)func3:(id)p cb:(JSExportCallBack)cb;

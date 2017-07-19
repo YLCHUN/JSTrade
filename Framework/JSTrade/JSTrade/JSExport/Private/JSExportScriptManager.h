@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class JSExportModel,JSExportMethod, WKUserScript, WKScriptMessage;
+@class JSExportModel,JSExportMethod, WKUserScript, JSExportMessage;
 
 @interface JSExportScriptManager : NSObject
 @property (nonatomic, copy, readonly) NSString* key;
@@ -17,6 +17,6 @@
 
 -(void)addToDict:(NSMutableDictionary*)dict;
 
--(void)jsHandlerCallWithMessage:(WKScriptMessage*)message;
+-(id)jsHandlerCallWithMessage:(JSExportMessage*)message;
 
 @end

@@ -14,71 +14,84 @@
 #import "NSMethodSignature+JSTrade.h"
 #import "JSExportMethod.h"
 #import "JSExportScriptManager.h"
+#import "JSExportMessage.h"
+#import "NSJSONSerialization+JSTrade.h"
 
 NSString* jsExportHandlerCode (){
     static NSString *jsExportModelString;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         jsExportModelString = [NSString stringWithFormat:@"window.%@ = {\n\
-                               callBackHandlers: {},\n\
-                               callBack: function(params) {\n\
-                               var spaceName = params.spaceName;\n\
-                               var funcName = params.funcName;\n\
-                               var param = params.param;\n\
-                               var key = spaceName+'_'+funcName;\n\
-                               var callBack = this.callBackHandlers[key];\n\
-                               if (callBack) {\n\
-                               callBack(param);\n\
-                               }\n\
-                               },\n\
+                                        callBackHandlers: {},\n\
+                                                callBack: function(params) {\n\
+                                                    var spaceName = params.spaceName;\n\
+                                                    var funcName = params.funcName;\n\
+                                                    var param = params.param;\n\
+                                                    var key = spaceName + '_' + funcName;\n\
+                                                    var callBack = this.callBackHandlers[key];\n\
+                                                    if (callBack) {\n\
+                                                        callBack(param);\n\
+                                                    }\n\
+                                                },\n\
                                \n\
-                               holdCallBack: function(spaceName, funcName, callBack) {\n\
-                               var key = spaceName+'_'+funcName;\n\
-                               if ((callBack && key) && (this.callBackHandlers[key] != callBack)) {\n\
-                               this.callBackHandlers[key] = callBack;\n\
-                               }\n\
-                               },\n\
+                                            holdCallBack: function(spaceName, funcName, callBack) {\n\
+                                                var key = spaceName + '_' + funcName;\n\
+                                                if ((callBack && key) && (this.callBackHandlers[key] != callBack)) {\n\
+                                                    this.callBackHandlers[key] = callBack;\n\
+                                                }\n\
+                                            },\n\
                                \n\
-                               callWebKit: function(spaceName, funcName, params, callBack) {\n\
-                               if (callBack) {\n\
-                               this.holdCallBack(spaceName, funcName, callBack);\n\
-                               }\n\
-                               var message = {};\n\
-                               message['spaceName'] = spaceName;\n\
-                               message['funcName'] = funcName;\n\
-                               if (params) {\n\
-                               message['params'] = params;\n\
-                               }\n\
-                               this.doWebKit(message);\n\
-                               },\n\
+                                              callWebKit: function(spaceName, funcName, params, isReturn, callBack) {\n\
+                                                  if (callBack) {\n\
+                                                      this.holdCallBack(spaceName, funcName, callBack);\n\
+                                                  }\n\
+                                                  var message = {};\n\
+                                                  message['spaceName'] = spaceName;\n\
+                                                  message['funcName'] = funcName;\n\
+                                                  if (params) {\n\
+                                                      message['params'] = params;\n\
+                                                  }\n\
+                                                  if (isReturn) {\n\
+                                                      return this.doWebKit_prompt(message);\n\
+                                                  } else {\n\
+                                                      this.doWebKit_post(message);\n\
+                                                  }\n\
+                                              },\n\
                                \n\
-                               doWebKit: function(message){\n\
-                               window.webkit.messageHandlers.%@.postMessage(message);\n\
-                               },\n\
+                                           doWebKit_post: function(message) {\n\
+                                               window.webkit.messageHandlers.%@.postMessage(message);\n\
+                                           },\n\
+                                         doWebKit_prompt: function(message) {\n\
+                                             var message_json = JSON.stringify(message);\n\
+                                             var result_json = prompt('%@', message_json);\n\
+                                             var result = JSON.parse(result_json);\n\
+                                             var res = result['result'];\n\
+                                             return res;\n\
+                                         },\n\
                                \n\
-                               transfer: function(spaceName, funcName, funcArguments) {\n\
-                               var params = new Array();\n\
-                               var callBack;\n\
-                               for (var i = 0; i < funcArguments.length; i++) {\n\
-                               var funcArgument = funcArguments[i];\n\
-                               var isFunc = typeof funcArgument == 'function';\n\
-                               if (i == funcArguments.length - 1) {\n\
-                               if (isFunc) {\n\
-                               callBack = funcArgument;\n\
-                               } else {\n\
-                               params[i] = funcArgument;\n\
-                               }\n\
-                               } else {\n\
-                               if (isFunc) {\n\
-                               params[i] = null;\n\
-                               } else {\n\
-                               params[i] = funcArgument;\n\
-                               }\n\
-                               }\n\
-                               }\n\
-                               this.callWebKit(spaceName, funcName, params, callBack);\n\
-                               }\n\
-                               }\n", kJSExport_registerKey, kJSExport_registerKey];
+                                                transfer: function(spaceName, funcName, funcArguments, isReturn) {\n\
+                                                    var params = new Array();\n\
+                                                    var callBack;\n\
+                                                    for (var i = 0; i < funcArguments.length; i++) {\n\
+                                                        var funcArgument = funcArguments[i];\n\
+                                                        var isFunc = typeof funcArgument == 'function';\n\
+                                                        if (i == funcArguments.length - 1) {\n\
+                                                            if (isFunc) {\n\
+                                                                callBack = funcArgument;\n\
+                                                            } else {\n\
+                                                                params[i] = funcArgument;\n\
+                                                            }\n\
+                                                        } else {\n\
+                                                            if (isFunc) {\n\
+                                                                params[i] = null;\n\
+                                                            } else {\n\
+                                                                params[i] = funcArgument;\n\
+                                                            }\n\
+                                                        }\n\
+                                                    }\n\
+                                                    return this.callWebKit(spaceName, funcName, params, isReturn, callBack);\n\
+                                                }\n\
+                               }", kJSExport_registerKey, kJSExport_registerKey, kJSExport_registerKey];
     });
     return jsExportModelString;
 }
@@ -97,19 +110,63 @@ NSString* jsExportHandlerCode (){
 #pragma mark -
 #pragma mark - _JSExportManager
 
-@interface _JSExportManager : NSObject <WKScriptMessageHandler>
+@interface _JSExportManager : NSObject <WKScriptMessageHandler, WKUIDelegate>
 @property (nonatomic, weak) JSExportManager *manager;
+@property (nonatomic, weak) id UIDelegateReceiver;
 @end
 @implementation _JSExportManager
+
+#pragma mark - WKScriptMessageHandler
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     if ([message.name isEqualToString:kJSExport_registerKey]) {
         NSDictionary *dict = message.body;
         NSString *spaceName = dict[@"spaceName"];
         if (spaceName.length>0) {
+            JSExportMessage *msg = [[JSExportMessage alloc] initWithWebView:message.webView message:dict];
             JSExportScriptManager *sm = self.manager.handlerDict[spaceName];
-            [sm jsHandlerCallWithMessage:message];
+            [sm jsHandlerCallWithMessage:msg];
         }
     }
+}
+
+#pragma mark - UIDelegate Prompt
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable result))completionHandler {
+    if ([prompt isEqualToString:kJSExport_registerKey]) {
+        id resault;
+        NSDictionary *dict = [NSJSONSerialization unserializeJSON:defaultText toStringValue:NO];
+        NSString *spaceName = dict[@"spaceName"];
+        if (spaceName.length>0) {
+            JSExportMessage *msg = [[JSExportMessage alloc] initWithWebView:webView message:dict];
+            JSExportScriptManager *sm = self.manager.handlerDict[spaceName];
+            resault = [sm jsHandlerCallWithMessage:msg];
+        }
+        NSMutableDictionary *res = [NSMutableDictionary dictionary];
+        res[@"funcName"] = dict[@"funcName"];
+        res[@"result"] = [resault?resault:[NSNull alloc] init];;
+        NSString *resault_json = [NSJSONSerialization serializeDictOrArr:res];
+        completionHandler(resault_json);
+    }else{
+        if ([self.UIDelegateReceiver respondsToSelector:_cmd]) {
+            [self.UIDelegateReceiver webView:webView runJavaScriptTextInputPanelWithPrompt:prompt defaultText:defaultText initiatedByFrame:frame completionHandler:completionHandler];
+        }
+    }
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if ([super respondsToSelector:aSelector]) {
+        return self;
+    }
+    if (self.UIDelegateReceiver && [self.UIDelegateReceiver respondsToSelector:aSelector]) {
+        return self.UIDelegateReceiver;
+    }
+    return nil;
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    if (self.UIDelegateReceiver && [self.UIDelegateReceiver respondsToSelector:aSelector]) {
+        return YES;
+    }
+    return [super respondsToSelector:aSelector];
 }
 @end
 
@@ -230,6 +287,12 @@ NSString* jsExportHandlerCode (){
     }
 }
 
+#pragma mark - 
++(void)asyncCallJSAfterReturn:(void(^)(void))code {
+    if (code) {
+        dispatch_async(dispatch_get_global_queue(0, 0), code);
+    }
+}
 @end
 
 #pragma mark -
@@ -261,3 +324,59 @@ NSString* jsExportHandlerCode (){
 void import_JSExportManager(void) {
     
 }
+
+#pragma mark -
+#pragma mark - WKWebView_UIDelegate;
+
+void jsTrade_replaceMethod(Class class, SEL originSelector, SEL newSelector) {
+    Method oriMethod = class_getInstanceMethod(class, originSelector);
+    Method newMethod = class_getInstanceMethod(class, newSelector);
+    BOOL isAddedMethod = class_addMethod(class, originSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
+    if (isAddedMethod) {
+        class_replaceMethod(class, newSelector, method_getImplementation(oriMethod), method_getTypeEncoding(oriMethod));
+    } else {
+        method_exchangeImplementations(oriMethod, newMethod);
+    }
+}
+
+@implementation WKWebView (JSExport)
++(void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+        jsTrade_replaceMethod(class, @selector(setUIDelegate:), @selector(_setUIDelegate:));
+        jsTrade_replaceMethod(class, @selector(UIDelegate), @selector(_UIDelegate));
+        jsTrade_replaceMethod(class, @selector(initWithFrame:configuration:), @selector(_initWithFrame:configuration:));
+        
+    });
+}
+-(instancetype)_initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration {
+    WKWebView *webView = [self _initWithFrame:frame configuration:configuration];
+    if (configuration.userContentController.jsExportManager) {
+        self.UIDelegate = nil;
+    }
+    return webView;
+}
+
+-(void)_setUIDelegate:(id<WKUIDelegate>)UIDelegate {
+    _JSExportManager *delegate = self.configuration.userContentController.jsExportManager.manager;
+    if (delegate) {
+        if (delegate != UIDelegate) {
+            delegate.UIDelegateReceiver = UIDelegate;
+        }
+        [self _setUIDelegate:delegate];
+    }else{
+        [self _setUIDelegate:UIDelegate];
+    }
+}
+
+-(id<WKUIDelegate>)_UIDelegate {
+    _JSExportManager *delegate = self.configuration.userContentController.jsExportManager.manager;
+    if (delegate) {
+        return delegate.UIDelegateReceiver;
+    }else {
+        return [self _UIDelegate];
+    }
+}
+
+@end

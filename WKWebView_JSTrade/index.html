@@ -24,7 +24,8 @@
         
         function ocModelFunc0Click() {
             if (window.ocModel){
-                window.ocModel.func0();
+               var i =  window.ocModel.func0();
+               alert(i);
             }
         }
         function ocModelFunc1Click() {
@@ -72,14 +73,14 @@
             }
         }
         function jsHandlerClick(){
-            window.jsHandler(10);
+           var i =  window.jsHandler(10);
+           alert(i);
         }
         function jsHandlerCBClick(){
             window.jsHandlerCB('11', function(param){
                              alert(param);
                              });
         }
-
         </script>
             </head>
     
@@ -111,6 +112,5 @@
         <h1>jsHandler.func</h1>
         <input type="button" value="jsHandler" onclick="jsHandlerClick()" />
         <input type="button" value="jsHandler_CB" onclick="jsHandlerCBClick()" />
-
     </body>
 </html>

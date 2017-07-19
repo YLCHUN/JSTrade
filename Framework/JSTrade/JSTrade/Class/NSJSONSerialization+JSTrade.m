@@ -80,6 +80,18 @@
     }
 }
 
+
++ (NSString*)serializeDictOrArr:(id)dictOrArr {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictOrArr options:0 error:&error];
+    NSString *jsonString = @"";
+    if (jsonData){
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];  //去除掉首尾的空白字符和换行字符
+    }
+    return jsonString;
+}
+
 @end
 void import_NSJSONSerialization_JSTrade() {
     

@@ -10,7 +10,8 @@
 
 @implementation OCModel1
 
--(void)func0 {
+-(NSNumber*)func0 {
+    return @(1);
 }
 
 -(void)func1:(id)p {

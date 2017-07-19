@@ -12,6 +12,7 @@
 #import <WebKit/WebKit.h>
 #import "WKWebView+JSTrade.h"
 #import "JSTradeCommon.h"
+#import "JSExportMessage.h"
 
 @interface JSExportModel ()
 @property (nonatomic, weak) WKWebView *webView;
@@ -77,7 +78,7 @@ static Class kNSBlock_class() {
 
 #pragma mark - jsHandlerCall
 
--(void)jsHandlerCallWithMessage:(WKScriptMessage*)message {
+-(id)jsHandlerCallWithMessage:(JSExportMessage*)message {
     NSDictionary *dict = message.body;
     NSArray *params = dict[@"params"];
     WKWebView *webView = message.webView;
@@ -95,8 +96,10 @@ static Class kNSBlock_class() {
         if (method.callBack) {
             callBack = [self jsExportCallBackWithMessage:dict webView:webView];
         }
-        [method invokeWithParams:params callBack:callBack];
+       id result = [method invokeWithParams:params callBack:callBack];
+        return result;
     }
+    return nil;
 }
 
 -(JSExportCallBack)jsExportCallBackWithMessage:(NSDictionary*)message webView:(WKWebView*)webView {

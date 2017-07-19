@@ -94,16 +94,15 @@ NSString* JSExportCallBack_encode(){
 
 -(NSString *)scriptCode {
     if (!_scriptCode) {
+        NSString *isRetuen = self.signature.methodReturnLength>0?@"true":@"false";
         if (self.sel_model) {
             _scriptCode = [NSString stringWithFormat:@"%@: function() {\n\
-                           funcName = '%@';\n\
-                           window.%@.transfer(this.spaceName, funcName, arguments);\n\
-                           }\n", self.jsFuncName, self.jsFuncName, kJSExport_registerKey];
+                           return window.%@.transfer(this.spaceName, '%@', arguments, %@);\n\
+                           }\n", self.jsFuncName, kJSExport_registerKey, self.jsFuncName, isRetuen];
         }else {
             _scriptCode = [NSString stringWithFormat:@"function %@() {\n\
-                           funcName = '%@';\n\
-                           window.%@.transfer(funcName, funcName, arguments);\n\
-                           }\n", self.jsFuncName, self.jsFuncName, kJSExport_registerKey];
+                           return window.%@.transfer(funcName, '%@', arguments, %@);\n\
+                           }\n", self.jsFuncName, kJSExport_registerKey, self.jsFuncName, isRetuen];
         }
     }
     return _scriptCode;
@@ -143,7 +142,7 @@ NSString* JSExportCallBack_encode(){
     [invocation invoke];
     id returnValue = nil;
     if (self.signature.methodReturnLength) {
-        [invocation getReturnValue:&returnValue];
+       returnValue = [self.signature getInvocationValue:invocation atIndex:-1];
     }
     return returnValue;
 }

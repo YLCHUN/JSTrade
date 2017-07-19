@@ -26,6 +26,9 @@
 //      JSExportAs(doFoo,
 //           - (void)doFoo:(id)foo withBar:(id)bar
 //           );//window.<#spaceName#>.doFoo(foo,bar);
+
+//若直接return函数方法体内需要调用js函数，需要在子线程执行或者采用[JSExportManager asyncCallJSAfterReturn:^{<#callJSCode#>}]
+//-(id)func0;                                 //var res = window.<#spaceName#>.func0();
 @end
 
 @class WKWebView;
@@ -54,5 +57,6 @@ typedef void(^JSExportCallBack) (id object);
  @return jsImportModels
  */
 -(NSArray <JSImportModel<JSImportProtocol> *> *)jsImportModels;
+
 
 @end
