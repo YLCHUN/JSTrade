@@ -31,14 +31,12 @@
     return _jsModel;
 }
 
--(NSNumber*)func0 {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-    });
+-(int)func0 {
     [JSExportManager asyncCallJSAfterReturn:^{
         self.document.title = @"title";
         self.document.bgColor = @"#E6E6FA";
     }];
-    return @(1);
+    return 1;
 }
 
 -(void)func1:(id)p {

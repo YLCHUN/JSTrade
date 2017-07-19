@@ -12,7 +12,6 @@
 
 
 #import "OCModel.h"
-#import "OCModel1.h"
 
 
 @interface ViewController ()<WKUIDelegate, WKNavigationDelegate>
@@ -61,7 +60,7 @@
 
 - (void)jsExportSet {
     self.jsExport[@"ocModel"] = [[OCModel alloc] init];
-    self.jsExport[@"ocModel1"] = [[OCModel1 alloc] init];
+    self.jsExport[@"ocModel1"] = [[OCModel alloc] init];
     self.jsExport[@"jsHandler"] =  ^int(int i){
         NSLog(@"%d", i);
         return 11;

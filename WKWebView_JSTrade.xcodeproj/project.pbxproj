@@ -16,7 +16,6 @@
 		A94638971EDAAB18006F94A0 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = A946388E1EDAAB18006F94A0 /* index.html */; };
 		A94638981EDAAB18006F94A0 /* JSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A94638901EDAAB18006F94A0 /* JSModel.m */; };
 		A94638991EDAAB18006F94A0 /* OCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A94638921EDAAB18006F94A0 /* OCModel.m */; };
-		A946389A1EDAAB18006F94A0 /* OCModel1.m in Sources */ = {isa = PBXBuildFile; fileRef = A94638941EDAAB18006F94A0 /* OCModel1.m */; };
 		A946389B1EDAAB18006F94A0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A94638961EDAAB18006F94A0 /* ViewController.m */; };
 		A957DFBC1F0B7FF500939A4F /* JSTrade.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A957DFBB1F0B7FED00939A4F /* JSTrade.framework */; };
 /* End PBXBuildFile section */
@@ -47,8 +46,6 @@
 		A94638901EDAAB18006F94A0 /* JSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSModel.m; sourceTree = "<group>"; };
 		A94638911EDAAB18006F94A0 /* OCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCModel.h; sourceTree = "<group>"; };
 		A94638921EDAAB18006F94A0 /* OCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCModel.m; sourceTree = "<group>"; };
-		A94638931EDAAB18006F94A0 /* OCModel1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCModel1.h; sourceTree = "<group>"; };
-		A94638941EDAAB18006F94A0 /* OCModel1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCModel1.m; sourceTree = "<group>"; };
 		A94638951EDAAB18006F94A0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A94638961EDAAB18006F94A0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A957DFB61F0B7FED00939A4F /* JSTrade.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSTrade.xcodeproj; path = Framework/JSTrade.xcodeproj; sourceTree = "<group>"; };
@@ -126,8 +123,6 @@
 				A94638901EDAAB18006F94A0 /* JSModel.m */,
 				A94638911EDAAB18006F94A0 /* OCModel.h */,
 				A94638921EDAAB18006F94A0 /* OCModel.m */,
-				A94638931EDAAB18006F94A0 /* OCModel1.h */,
-				A94638941EDAAB18006F94A0 /* OCModel1.m */,
 			);
 			name = JSTradeMocel;
 			sourceTree = "<group>";
@@ -220,7 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A946389A1EDAAB18006F94A0 /* OCModel1.m in Sources */,
 				A94638981EDAAB18006F94A0 /* JSModel.m in Sources */,
 				A946389B1EDAAB18006F94A0 /* ViewController.m in Sources */,
 				A94638691EDAAAA1006F94A0 /* AppDelegate.m in Sources */,
