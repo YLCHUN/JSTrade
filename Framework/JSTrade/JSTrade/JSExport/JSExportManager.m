@@ -144,7 +144,7 @@ NSString* jsExportHandlerCode (){
         NSMutableDictionary *res = [NSMutableDictionary dictionary];
         res[@"funcName"] = dict[@"funcName"];
         res[@"result"] = [resault?resault:[NSNull alloc] init];;
-        NSString *resault_json = [NSJSONSerialization serializeDictOrArr:res];
+        NSString *resault_json = [NSJSONSerialization serializeToJSON:res];
         completionHandler(resault_json);
     }else{
         if ([self.UIDelegateReceiver respondsToSelector:_cmd]) {

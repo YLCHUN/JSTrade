@@ -81,13 +81,20 @@
 }
 
 
-+ (NSString*)serializeDictOrArr:(id)dictOrArr {
++ (NSString*)serializeToJSON:(id)dictOrArr {
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictOrArr options:0 error:&error];
     NSString *jsonString = @"";
-    if (jsonData){
-        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];  //去除掉首尾的空白字符和换行字符
+    @try {
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictOrArr options:0 error:&error];
+        if (jsonData){
+            jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];  //去除掉首尾的空白字符和换行字符
+        }
+    } @catch (NSException *exception) {
+        //object类型需要手动转换成NSDictionary
+        [exception raise];
+    } @finally {
+        
     }
     return jsonString;
 }

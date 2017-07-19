@@ -25,7 +25,7 @@
  @param dictOrArr <#dictOrArr description#>
  @return json
  */
-+ (NSString*)serializeDictOrArr:(id)dictOrArr;
++ (NSString*)serializeToJSON:(id)dictOrArr;
 
 @end
 void import_NSJSONSerialization_JSTrade(void);

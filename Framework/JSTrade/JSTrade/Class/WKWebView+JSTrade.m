@@ -8,6 +8,7 @@
 
 #import "WKWebView+JSTrade.h"
 #import "JSTradeCommon.h"
+#import "NSJSONSerialization+JSTrade.h"
 
 @implementation WKWebView (JSTrade)
 
@@ -61,9 +62,9 @@
                     [arr addObject:@"null"];
                 }else
                     if ([p isKindOfClass:[NSArray class]] || [p isKindOfClass:[NSDictionary class]]) {
-                        [arr addObject:[self serializeMessageToJSON:p]];
+                        [arr addObject:[NSJSONSerialization serializeToJSON:p]];
                     }else {
-                        NSString *tmp = [self serializeMessageToJSON:@[p]];
+                        NSString *tmp = [NSJSONSerialization serializeToJSON:@[p]];
                         NSRange range= NSMakeRange(1,tmp.length-2);
                         tmp = [tmp substringWithRange:range];
                         [arr addObject:tmp];
@@ -73,25 +74,6 @@
     NSString *paramsJSON = [arr componentsJoinedByString:@","];
     return paramsJSON;
 }
-
-- (NSString*)serializeMessageToJSON:(id)dictOrArr {
-    NSError *error;
-    NSString *jsonString = @"";
-    @try {
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictOrArr options:0 error:&error];
-        if (jsonData){
-            jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];  //去除掉首尾的空白字符和换行字符
-        }
-    } @catch (NSException *exception) {
-        //object类型需要手动转换成NSDictionary
-        [exception raise];
-    } @finally {
-        
-    }
-    return jsonString;
-}
-
 
 @end
 void import_WKWebView_JSTrade() {
