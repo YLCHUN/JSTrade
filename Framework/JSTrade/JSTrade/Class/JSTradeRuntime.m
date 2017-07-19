@@ -9,12 +9,12 @@
 #import "JSTradeRuntime.h"
 #import <objc/runtime.h>
 
-void jsTrade_replaceMethod(Class class, SEL originSelector, SEL newSelector) {
-    Method oriMethod = class_getInstanceMethod(class, originSelector);
-    Method newMethod = class_getInstanceMethod(class, newSelector);
-    BOOL isAddedMethod = class_addMethod(class, originSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
+void jsTrade_replaceMethod(Class cls, SEL originSelector, SEL newSelector) {
+    Method oriMethod = class_getInstanceMethod(cls, originSelector);
+    Method newMethod = class_getInstanceMethod(cls, newSelector);
+    BOOL isAddedMethod = class_addMethod(cls, originSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
     if (isAddedMethod) {
-        class_replaceMethod(class, newSelector, method_getImplementation(oriMethod), method_getTypeEncoding(oriMethod));
+        class_replaceMethod(cls, newSelector, method_getImplementation(oriMethod), method_getTypeEncoding(oriMethod));
     } else {
         method_exchangeImplementations(oriMethod, newMethod);
     }

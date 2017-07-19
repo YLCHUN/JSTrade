@@ -8,4 +8,4 @@
 
 #import <Foundation/Foundation.h>
 
-void jsTrade_replaceMethod(Class class, SEL originSelector, SEL newSelector);
+void jsTrade_replaceMethod(Class cls, SEL originSelector, SEL newSelector);
