@@ -120,7 +120,7 @@ static void jsTrade_addFunction(Class subClass) {
 static void jsTrade_forwardInvocation(id self) {
     NSCParameterAssert(self);
     Class selfClass = object_getClass(self);
-    char buffer[2048] = "";
+    char buffer[100] = "";
     const char *selfclass = object_getClassName(self);
     strcpy(buffer,selfclass);
     strcat(buffer,"_miSub");
