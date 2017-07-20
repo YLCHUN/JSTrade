@@ -11,9 +11,9 @@
 @implementation JSModel_Document
 
 -(instancetype)init {
-    self = [super initWithSpaceName:@"document"];
+    self = [super init];
     if (self) {
-        
+        JSTradeImportSpaceNameSet(self, @"document");
     }
     return self;
 }

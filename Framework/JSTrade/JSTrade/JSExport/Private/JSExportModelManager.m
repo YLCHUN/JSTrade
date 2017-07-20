@@ -1,92 +1,24 @@
 //
-//  JSExportModel.m
+//  JSExportModelManager.m
 //  JSTrade
 //
-//  Created by YLCHUN on 2017/3/14.
+//  Created by YLCHUN on 2017/7/20.
 //  Copyright © 2017年 ylchun. All rights reserved.
 //
 
-#import "JSExportModel.h"
-#import "JSExportModel_Import.h"
+#import "JSExportModelManager.h"
 #import <objc/runtime.h>
 #import "NSMethodSignature+JSTrade.h"
 #import "WKWebView+JSTrade.h"
 #import "NSJSONSerialization+JSTrade.h"
 #import <WebKit/WebKit.h>
 #import "JSTradeCommon.h"
-
 #import "JSExportMethod.h"
-
-#pragma mark -
-#pragma mark - JSExportModel
-
-@interface JSExportModel ()
-@property (nonatomic, strong) NSDictionary <NSString*,JSExportMethod*> *methodDict;
-@property (nonatomic, copy) NSArray <JSImportModel<JSImportProtocol> *> *jsImportModelArray;
-@property (nonatomic, weak) WKWebView *webView;
-@end
-
-@implementation JSExportModel
-
--(instancetype)init {
-    self = [super init];
-    if (self) {
-        [self construction];
-    }
-    return self;
-}
-
--(void)construction {
-    if (![self conformsToProtocol:@protocol(JSExportProtocol)]) {
-        NSString *error = [NSString stringWithFormat:@"%@未实现JSExportProtocol子协议！", NSStringFromClass([self class])];
-        NSAssert(NO, error);
-        NSException *excp = [NSException exceptionWithName:@"JSExport Error" reason:error userInfo:nil];
-        [excp raise]; // 抛出异常
-    }else{
-        self.jsImportModelArray = [self jsImportModels];
-    }
-}
-
--(void)dealloc {
-    self.methodDict = nil;
-}
-
-
-#pragma mark - GET SET
-
--(void)setWebView:(WKWebView *)webView {
-    if (_webView == webView) {
-        return;
-    }
-    _webView = webView;
-    for (JSImportModel *jsImportModel in self.jsImportModelArray) {
-        jsImportModel.webView = _webView;
-    }
-}
-
--(NSDictionary<NSString *,JSExportMethod *> *)methodDict {
-    NSDictionary <NSString*,JSExportMethod*> *methodDict = objc_getAssociatedObject(self, @selector(methodDict));
-    if (!methodDict) {
-        methodDict = [JSExportModel jsExportMethodsWithModel:self];
-        self.methodDict = methodDict;
-    }
-    return methodDict;
-}
--(void)setMethodDict:(NSDictionary<NSString *,JSExportMethod *> *)methodDict {
-    objc_setAssociatedObject(self, @selector(methodDict), methodDict, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
--(NSArray<JSImportModel<JSImportProtocol> *> *)jsImportModelArray {
-    return objc_getAssociatedObject(self, @selector(jsImportModelArray));
-}
-
--(void)setJsImportModelArray:(NSArray<JSImportModel<JSImportProtocol> *> *)jsImportModelArray {
-    objc_setAssociatedObject(self, @selector(jsImportModelArray), jsImportModelArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
 
 
 #pragma mark - JSExportProtocol analysize
-+(NSDictionary<NSString *,JSExportMethod *>*)jsExportMethodsWithModel:(JSExportModel*)model {
+
+NSDictionary<NSString *,JSExportMethod *>* jsExportMethods(id<JSExportProtocol> model) {
     Protocol *jsProtocol = @protocol(JSExportProtocol);
     Class cls = [model class];
     if (class_conformsToProtocol(cls,jsProtocol)){
@@ -143,15 +75,58 @@
     }
 }
 
-#pragma mark - WKUserScript
--(WKUserScript *)scriptWithKey:(NSString*)aKey {
-    NSString *jsCode = [self jsExportCodeWithKey:aKey];
-    WKUserScript *script = [[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-    return script;
+#pragma mark - GET SET
+
+static const char *k_webView = "jsTrade_webView";
+static const char *k_jsImportModelArray = "jsTrade_jsImportModelArray";
+static const char *k_methodDict = "jsTrade_methodDict";
+
+NSArray<JSImportObject> * getJsImportModelArray(JSExportObject self) {
+    return objc_getAssociatedObject(self, sel_registerName(k_jsImportModelArray));
 }
 
--(NSString*)jsExportCodeWithKey:(NSString*)aKey {
-    NSArray *methods = [self.methodDict allValues];
+void setJsImportModelArray(JSExportObject self, NSArray<JSImportObject> *jsImportModelArray) {
+    objc_setAssociatedObject(self, sel_registerName(k_jsImportModelArray), jsImportModelArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+WKWebView *getWebView(JSExportObject self) {
+    return objc_getAssociatedObject(self, sel_registerName(k_webView));
+}
+
+void setWebView(JSExportObject self, WKWebView *webView) {
+    if (getWebView(self) == webView) {
+        return;
+    }
+    objc_setAssociatedObject(self, sel_registerName(k_webView), webView, OBJC_ASSOCIATION_ASSIGN);
+    NSArray<JSImportObject> *jsImportModels = getJsImportModelArray(self);
+    if (!jsImportModels && [self respondsToSelector:@selector(jsImportModels)]) {
+        jsImportModels = [self jsImportModels];
+        setJsImportModelArray(self, jsImportModels);
+    }
+    for (JSImportObject jsImportModel in jsImportModels) {
+        jsImportModel.webView = getWebView(self);
+    }
+}
+
+
+void setMethodDict(JSExportObject self, NSDictionary<NSString *,JSExportMethod *> * methodDict) {
+    objc_setAssociatedObject(self, sel_registerName(k_methodDict), methodDict, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+NSDictionary<NSString *,JSExportMethod *> * getMethodDict(JSExportObject self) {
+    NSDictionary <NSString*,JSExportMethod*> *methodDict = objc_getAssociatedObject(self,sel_registerName(k_methodDict));
+    if (!methodDict) {
+        methodDict = jsExportMethods(self);
+        setMethodDict(self, methodDict);
+    }
+    return methodDict;
+}
+
+
+#pragma mark - WKUserScript
+
+NSString* getJsExportCodeWithKey(JSExportObject self, NSString *aKey) {
+    NSArray *methods = [getMethodDict(self) allValues];
     NSMutableString *jsExportModelString = [NSMutableString string];
     [jsExportModelString appendFormat:@"window.%@ = {\n", aKey];
     [jsExportModelString appendFormat:@"spaceName: '%@',\n", aKey];
@@ -164,25 +139,15 @@
     return jsExportModelString;
 }
 
+WKUserScript* getScriptWithKey(id self, NSString*aKey) {
+    NSString *jsCode = getJsExportCodeWithKey(self, aKey);
+    WKUserScript *script = [[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+    return script;
+}
+
 #pragma mark -
 
--(JSExportMethod*)methodWithFuncName:(NSString*)name {
-    return self.methodDict[name];
+JSExportMethod* getMethodWithFuncName(JSExportObject self, NSString *name) {
+    return getMethodDict(self)[name];
 }
 
--(id)callJSFunc:(NSString*)jsFunc arguments:(NSArray*)arguments {
-    return [self.webView jsFunc:jsFunc arguments:arguments];
-}
-
-- (id)unserializeJSON:(NSString *)jsonString toStringValue:(BOOL)toStringValue {
-    return [NSJSONSerialization unserializeJSON:jsonString toStringValue:toStringValue];
-}
-
--(NSArray <JSImportModel<JSImportProtocol> *> *)jsImportModels {
-    return nil;
-}
-
-@end
-void import_JSExportModel(){
-    
-}

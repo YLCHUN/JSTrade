@@ -9,7 +9,7 @@
 //  直接return需要考虑js执行锁（在return执行之前执行js）,可采用[JSExportManager asyncCallJSAfterReturn:^{<#callJSCode#>}]或者子线程发起调用。
 
 #import <Foundation/Foundation.h>
-#import "JSExportModel.h"
+#import "JSExportProtocol.h"
 #import <WebKit/WKUserContentController.h>
 
 @interface JSExportManager : NSObject

@@ -7,10 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@class JSExportModel;
+#import "JSExportProtocol.h"
 typedef id JSExportBlock;
-
-typedef void(^JSExportCallBack) (id object);//与JSExportModel.h JSExportCallBack一致
 
 @interface JSExportMethod : NSObject
 @property (nonatomic, copy) NSString *jsFuncName;
@@ -25,7 +23,7 @@ typedef void(^JSExportCallBack) (id object);//与JSExportModel.h JSExportCallBac
  @param sel sel
  @return JSExportModel
  */
-+(instancetype)methWithTarget:(JSExportModel*)target sel:(SEL)sel;
++(instancetype)methWithTarget:(JSExportObject)target sel:(SEL)sel;
 
 
 /**

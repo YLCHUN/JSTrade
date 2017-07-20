@@ -1,91 +1,58 @@
 //
-//  JSImportModel.m
+//  JSImportModelManager.m
 //  JSTrade
 //
-//  Created by YLCHUN on 2017/5/28.
+//  Created by YLCHUN on 2017/7/20.
 //  Copyright © 2017年 ylchun. All rights reserved.
 //
 
-#import "JSImportModel.h"
-#import "JSImportModel_Import.h"
-#import "JSImportMethod.h"
+#import "JSImportModelManager.h"
+#import "JSImportProtocol.h"
 #import <objc/runtime.h>
+#import <objc/message.h>
+#import "JSImportMethod.h"
 #import "NSMethodSignature+JSTrade.h"
 #import "WKWebView+JSTrade.h"
 #import "NSJSONSerialization+JSTrade.h"
 
-#pragma mark -
-#pragma mark - JSImportModel
-
-@interface JSImportModel ()
-@property (nonatomic, copy) NSString* spaceName;
-@property (nonatomic, strong) NSDictionary<NSString *, JSImportMethod *> *methodDict;
-@end
-
-@implementation JSImportModel
-
--(instancetype)init {
-    self = [super init];
-    if (self) {
-        [self construction];
-    }
-    return self;
-}
-
--(instancetype)initWithSpaceName:(NSString*)name {
-    self = [super init];
-    if (self) {
-        self.spaceName = name;
-        [self construction];
-    }
-    return self;
-}
-
--(void)dealloc {
-    self.methodDict = nil;
-}
-
--(void)construction {
-    if (![self conformsToProtocol:@protocol(JSImportProtocol)]) {
-        NSString *error = [NSString stringWithFormat:@"%@未实现JSImportProtocol子协议！", NSStringFromClass([self class])];
-        [[NSException exceptionWithName:@"JSImport Error" reason:error userInfo:nil]raise];
-    }else{
-        [JSImportModel jsImportMethodsWithModel:(JSImportModel<JSImportProtocol>*)self];
-    }
-}
-
-
 #pragma mark - GET SET
-
--(NSString *)spaceName {
-    return objc_getAssociatedObject(self, @selector(spaceName));
+static const char *k_webView = "jsTrade_webView";
+static const char *k_spaceName = "jsTrade_spaceName";
+static const char *k_methodDict = "jsTrade_methodDict";
+static WKWebView *getWebView(JSImportObject self) {
+    return objc_getAssociatedObject(self, sel_registerName(k_webView));
 }
--(void)setSpaceName:(NSString *)spaceName {
-    objc_setAssociatedObject(self, @selector(spaceName), spaceName, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
--(NSDictionary<NSString *,JSImportMethod *> *)methodDict {
-    return objc_getAssociatedObject(self, @selector(methodDict));
-}
--(void)setMethodDict:(NSDictionary<NSString *,JSImportMethod *> *)methodDict {
-    objc_setAssociatedObject(self, @selector(methodDict), methodDict, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+static void setWebView(JSImportObject self, WKWebView *webView) {
+    objc_setAssociatedObject(self, sel_registerName(k_webView), webView, OBJC_ASSOCIATION_ASSIGN);
 }
 
-#pragma mark - forward
-
--(void)forwardFunction {
-    
+NSString *getSpaceName(JSImportObject self) {
+    return objc_getAssociatedObject(self, sel_registerName(k_spaceName));
 }
+static void setSpaceName(JSImportObject self, NSString *spaceName) {
+    objc_setAssociatedObject(self, sel_registerName(k_spaceName), spaceName, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+NSDictionary<NSString *,JSImportMethod *> *getMethodDict(id self) {
+    return objc_getAssociatedObject(self, sel_registerName(k_methodDict));
+}
+static void setMethodDict(JSImportObject self, NSDictionary<NSString *,JSImportMethod *> *methodDict) {
+    objc_setAssociatedObject(self, sel_registerName(k_methodDict), methodDict, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+#pragma mark -
+static const char* name_forwardFunction = "jsTrade_forwardFunction";
+static const char* name_forwardInvocation = "jsTrade_forwardInvocation:";
 
-- (void)forwardInvocation:(NSInvocation *)anInvocation{
+static void forwardInvocation(JSImportObject self, NSInvocation *anInvocation) {
     NSString *selName = NSStringFromSelector(anInvocation.selector);
-    JSImportMethod *method = [self.methodDict objectForKey:selName];
+    JSImportMethod *method = [getMethodDict(self) objectForKey:selName];
     if (method) {
         if (!anInvocation.argumentsRetained) {
             [anInvocation retainArguments];
         }
         NSMethodSignature *signature = anInvocation.methodSignature;
-        
-        NSString *jsFuncName = self.spaceName.length>0 ? [NSString stringWithFormat:@"%@.%@", self.spaceName, method.jsFuncName] : method.jsFuncName;
+        NSString *spaceName = getSpaceName(self);
+        NSString *jsFuncName = spaceName.length>0 ? [NSString stringWithFormat:@"%@.%@", spaceName, method.jsFuncName] : method.jsFuncName;
+        WKWebView *webView = getWebView(self);
         id returnValue;
         if (method.isVar) {
             if (method.isSet) {
@@ -93,9 +60,9 @@
                 if (!param) {
                     param = [[NSNull alloc] init];
                 }
-                [self.webView jsSetVar:jsFuncName value:param];
+                [webView jsSetVar:jsFuncName value:param];
             }else{
-                returnValue = [self.webView jsGetVar:jsFuncName];
+                returnValue = [webView jsGetVar:jsFuncName];
             }
         }else{
             NSInteger paramsCount = signature.numberOfArguments - 2; // 除self、_cmd以外的参数个数
@@ -107,21 +74,90 @@
                 }
                 [params addObject:argument];
             }
-            returnValue = [self.webView jsFunc:jsFuncName arguments:params];
+            returnValue = [webView jsFunc:jsFuncName arguments:params];
         }
-        anInvocation.selector = @selector(forwardFunction);
+        anInvocation.selector = sel_registerName(name_forwardFunction);
         [anInvocation invoke];
         
         if (signature.methodReturnLength>0) {
             [signature setInvocation:anInvocation value:returnValue atIndex:-1];
         }
     }else {
-        [super forwardInvocation:anInvocation];
+        if ([selName isEqualToString:@"webView"]||[selName isEqualToString:@"setWebView:"]||[selName isEqualToString:@"spaceName"]) {//JSImportBase 函数未实现，不做处理
+            return;
+        }
+        ((void( *)(id, SEL, NSInvocation *))objc_msgSend)(self, sel_registerName(name_forwardInvocation), anInvocation);
     }
 }
 
+static void jsTrade_addFunction(Class subClass) {
+    IMP imp_forwardFunction = imp_implementationWithBlock(^(id self) {
+    });
+    class_addMethod(subClass, sel_registerName(name_forwardFunction), imp_forwardFunction, "v@:");
+    
+    //JSImportProtocol function
+    IMP imp_webView = imp_implementationWithBlock(^WKWebView*(id self) {
+        return getWebView(self);
+    });
+    class_addMethod(subClass, sel_registerName("webView"), imp_webView, "@@:");
+    IMP imp_setWebView = imp_implementationWithBlock(^(id self,WKWebView* webView) {
+        setWebView(self, webView);
+        //
+    });
+    class_addMethod(subClass, sel_registerName("setWebView:"), imp_setWebView, "v@:@");
+    
+    IMP imp_spaceName = imp_implementationWithBlock(^NSString*(id self) {
+        return getSpaceName(self);
+    });
+    class_addMethod(subClass, sel_registerName("spaceName"), imp_spaceName, "@@:");
+//    IMP imp_setSpaceName = imp_implementationWithBlock(^(id self,NSString* spaceName) {
+//        setSpaceName(self, spaceName);
+//    });
+//    class_addMethod(subClass, sel_registerName("setSpaceName:"), imp_setSpaceName, "v@:@");
+
+}
+
+static Class jsTrade_forwardInvocation(id self) {
+    NSCParameterAssert(self);
+    Class selfClass = object_getClass(self);
+    char buffer[2048] = "";
+    const char *selfclass = object_getClassName(self);
+    strcpy(buffer,selfclass);
+    strcat(buffer,"_miSub");
+    char *subclass = buffer;
+    Class subClass = objc_getClass(subclass);
+    if (subClass == nil) {
+        subClass = objc_allocateClassPair(selfClass, subclass, 0);
+        Method method_forwardInvocation = class_getInstanceMethod(subClass, @selector(forwardInvocation:));
+        const char *encode_forwardInvocation = method_getTypeEncoding(method_forwardInvocation);
+        IMP imp_forwardInvocation = imp_implementationWithBlock(^(id self, NSInvocation *anInvocation ) {
+            forwardInvocation(self, anInvocation);
+        });
+        BOOL b = class_addMethod(subClass, @selector(forwardInvocation:), imp_forwardInvocation, encode_forwardInvocation);
+        if (b) {
+            class_replaceMethod(subClass, sel_registerName(name_forwardInvocation), method_getImplementation(method_forwardInvocation), encode_forwardInvocation);
+        }else{
+            //添加失败
+        }
+        
+        Method method_class = class_getInstanceMethod(subClass, @selector(class));
+        IMP imp_class = imp_implementationWithBlock(^Class(id self) {
+            return selfClass;
+        });
+        const char *encode_class = method_getTypeEncoding(method_class);
+        class_replaceMethod(subClass, @selector(class), imp_class, encode_class);
+//        class_replaceMethod(object_getClass(subClass), @selector(class), imp_class, encode_class);
+        objc_registerClassPair(subClass);
+        jsTrade_addFunction(subClass);
+    }
+    
+    object_setClass(self, subClass);
+    return subClass;
+}
+
+
 #pragma mark - JSImportProtocol analysize
-+(void)jsImportMethodsWithModel:(JSImportModel<JSImportProtocol>*)model {
+static void jsImportMethods(JSImportObject model) {
     Protocol *jsProtocol = @protocol(JSImportProtocol);
     Class cls = [model class];
     if (class_conformsToProtocol(cls,jsProtocol)){
@@ -219,14 +255,20 @@
             }
         }
         free(methodList);
-        model.methodDict = methodDict;
+        setMethodDict(model, methodDict);
     }
 }
 
-#pragma mark -
-- (id)unserializeJSON:(NSString *)jsonString toStringValue:(BOOL)toStringValue {
-    return [NSJSONSerialization unserializeJSON:jsonString toStringValue:toStringValue];
-}
-@end
+#pragma mark - 
 
-void import_JSImportModel() {}
+void JSTradeImportSpaceNameSet(JSImportObject self, NSString*spaceName) {
+    if (spaceName.length == 0) {
+        return;
+    }
+    NSString*_spaceName = getSpaceName(self);
+    if (!_spaceName) {
+        jsTrade_forwardInvocation(self);
+        jsImportMethods(self);
+    }
+    setSpaceName(self, spaceName);    
+}

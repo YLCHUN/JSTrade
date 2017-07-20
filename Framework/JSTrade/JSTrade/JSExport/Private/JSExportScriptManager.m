@@ -7,18 +7,19 @@
 //
 
 #import "JSExportScriptManager.h"
-#import "JSExportModel.h"
+#import "JSExportProtocol.h"
+#import "JSExportModelManager.h"
 #import "JSExportMethod.h"
 #import <WebKit/WebKit.h>
 #import "WKWebView+JSTrade.h"
 #import "JSTradeCommon.h"
 #import "JSExportMessage.h"
 
-@interface JSExportModel ()
-@property (nonatomic, weak) WKWebView *webView;
--(JSExportMethod*)methodWithFuncName:(NSString*)name;
--(WKUserScript *)scriptWithKey:(NSString*)aKey;
-@end
+//@interface JSExportModel ()
+//@property (nonatomic, weak) WKWebView *webView;
+//-(JSExportMethod*)methodWithFuncName:(NSString*)name;
+//-(WKUserScript *)scriptWithKey:(NSString*)aKey;
+//@end
 
 static Class kNSBlock_class() {
     static Class cls;
@@ -34,7 +35,7 @@ static Class kNSBlock_class() {
 @property (nonatomic, copy) NSString* key;
 @property (nonatomic, strong) WKUserScript *script;
 
-@property (nonatomic, strong) JSExportModel *jsExportModel;
+@property (nonatomic, strong) id<JSExportProtocol> jsExportModel;
 @property (nonatomic, strong) JSExportMethod *jsExportMethod;
 
 @end
@@ -42,7 +43,7 @@ static Class kNSBlock_class() {
 @implementation JSExportScriptManager
 
 +(instancetype)methWithJSExportObject:(id)anObject andKey:(NSString*)aKey {
-    if ([anObject isKindOfClass:[JSExportModel class]] && [anObject conformsToProtocol:@protocol(JSExportProtocol)]) {
+    if ([anObject conformsToProtocol:@protocol(JSExportProtocol)]) {
         JSExportScriptManager *jsExportScriptManager = [[self alloc] init];
         jsExportScriptManager.jsExportModel = anObject;
         jsExportScriptManager.key = aKey;
@@ -67,7 +68,7 @@ static Class kNSBlock_class() {
 -(WKUserScript *)script {
     if (!_script) {
         if (self.jsExportModel) {
-            _script = [self.jsExportModel scriptWithKey:self.key];
+            _script = getScriptWithKey(self.jsExportModel, self.key);
         }
         if (self.jsExportMethod) {
             _script = [[WKUserScript alloc] initWithSource:[self.jsExportMethod scriptCode] injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
@@ -85,8 +86,8 @@ static Class kNSBlock_class() {
     JSExportMethod *method;
     if (self.jsExportModel) {
         NSString* funcName = dict[@"funcName"];
-        self.jsExportModel.webView = webView;
-        method = [self.jsExportModel methodWithFuncName:funcName];
+        setWebView(self.jsExportModel, webView);
+        method = getMethodWithFuncName(self.jsExportModel, funcName);
     }
     if (self.jsExportMethod) {
         method = self.jsExportMethod;

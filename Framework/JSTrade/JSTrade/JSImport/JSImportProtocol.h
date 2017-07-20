@@ -25,8 +25,16 @@
 #define JSImportFuncAs(FunctionName, Selector) \
 @optional Selector __JS_IMPORT_AS__##FunctionName:(id)argument NS_UNAVAILABLE; @optional Selector
 
+//函数内方法提供调用，
+@protocol JSImportBase <NSObject>
+@optional
+@property (nonatomic, weak) WKWebView *webView;
+//@required
+@property (nonatomic, readonly) NSString* spaceName;
+@end
+
 //采用自动转发函数请用 @optional 关键字修饰且禁止实现协议方法，@required 关键字修饰 需要手动实现方法体转发
-@protocol JSImportProtocol <NSObject>
+@protocol JSImportProtocol <JSImportBase>
 //@optional
 //JSImportVar(NSString *, str);
 //-(void)func0;                                 //window.<#spaceName#>.func0();
@@ -37,16 +45,15 @@
 //           );//window.<#spaceName#>.doFoo(foo,bar);
 @end
 
-@interface JSImportModel : NSObject
+typedef id<JSImportProtocol> JSImportObject;
+
+
 /**
- 调用js代码 window.<#spaceName#>.func()
+ 设置spaceName，必要函数
+
+ @param model JSImportObject
+ @param spaceName 必须为有效spaceName
  */
-@property (nonatomic, readonly) NSString* spaceName;
+void JSTradeImportSpaceNameSet(JSImportObject model, NSString*spaceName);
 
-@property (nonatomic, weak) WKWebView *webView;
 
--(instancetype)initWithSpaceName:(NSString*)name;
-
--(id)unserializeJSON:(NSString *)jsonString toStringValue:(BOOL)toStringValue;
-
-@end

@@ -37,7 +37,7 @@ JSImportVar(@property (nonatomic) NSString * vlinkColor);
 //-(NSString *)obj:(id)o;
 @end
 
-@interface JSModel_Document : JSImportModel<JSModelProtocol_Document>
+@interface JSModel_Document : NSObject<JSModelProtocol_Document>
 
 -(instancetype)initWithSpaceName:(NSString *)name NS_UNAVAILABLE;
 @end

@@ -54,7 +54,7 @@ NSString* JSExportCallBack_encode(){
 
 @implementation JSExportMethod
 
-+(instancetype)methWithTarget:(JSExportModel*)target sel:(SEL)sel {
++(instancetype)methWithTarget:(id)target sel:(SEL)sel {
     JSExportMethod *jsExportMethod = [[self alloc] init];
     jsExportMethod.target_model = target;
     jsExportMethod.sel_model = sel;
@@ -74,9 +74,6 @@ NSString* JSExportCallBack_encode(){
 -(BOOL)callBack {
     if (!_signature) {
         [self signature];
-        const char *encode = [_signature getArgumentTypeAtIndex:_signature.numberOfArguments - 1];
-        NSString *lastEncode = [NSString stringWithUTF8String:encode];
-        _callBack = [lastEncode containsString:JSExportCallBack_encode()];
     }
     return _callBack;
 }
@@ -88,6 +85,9 @@ NSString* JSExportCallBack_encode(){
         }else{
             _signature = [self methodSignatureForBlock:self.target_block];
         }
+        const char *encode = [_signature getArgumentTypeAtIndex:_signature.numberOfArguments - 1];
+        NSString *lastEncode = [NSString stringWithUTF8String:encode];
+        _callBack = [lastEncode containsString:JSExportCallBack_encode()];
     }
     return _signature;
 }

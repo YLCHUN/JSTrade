@@ -6,5 +6,5 @@
 //  Copyright © 2017年 ylchun. All rights reserved.
 //
 
-#import "JSImportModel.h"
+#import "JSImportProtocol.h"
 

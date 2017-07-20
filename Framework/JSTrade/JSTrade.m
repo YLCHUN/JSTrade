@@ -8,8 +8,6 @@
 //  编译器识别分类代码
 
 #import "JSTrade.h"
-#import "JSImportModel_Import.h"
-#import "JSExportModel_Import.h"
 #import "JSExportManager_Import.h"
 
 #import "JSTradeSourceShield.h"
@@ -19,8 +17,6 @@
 
 
 void import_JSTrade() {
-    import_JSImportModel();
-    import_JSExportModel();
     import_JSExportManager();
 
     import_JSTradeSourceShield();

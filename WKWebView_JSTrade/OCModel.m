@@ -26,7 +26,8 @@
 
 -(JSModel *)jsModel {
     if (!_jsModel) {
-        _jsModel = [[JSModel alloc] initWithSpaceName:@"jsModel"];
+        _jsModel = [[JSModel alloc] init];
+        JSTradeImportSpaceNameSet(_jsModel, @"jsModel");
     }
     return _jsModel;
 }
@@ -64,7 +65,7 @@
      cb([NSString stringWithFormat:@"func4:p2:cb: %d %@", p, p2]);
 }
 
--(NSArray <JSImportModel<JSImportProtocol> *> *)jsImportModels {
+-(NSArray <JSImportObject> *)jsImportModels {
     return @[self.jsModel, self.document];
 }
 

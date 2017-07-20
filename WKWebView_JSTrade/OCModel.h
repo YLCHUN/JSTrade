@@ -19,5 +19,5 @@ JSExportAs(func3,
            );
 @end
 
-@interface OCModel : JSExportModel <OCModelProtocol>
+@interface OCModel : NSObject <OCModelProtocol>
 @end

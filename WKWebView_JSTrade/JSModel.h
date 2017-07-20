@@ -29,6 +29,6 @@ JSImportFuncAs(sum,
 -(NSString *)obj:(id)o;
 @end
 
-@interface JSModel : JSImportModel <JSModelProtocol>
+@interface JSModel : NSObject <JSModelProtocol>
 
 @end

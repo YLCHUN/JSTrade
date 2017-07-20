@@ -6,5 +6,5 @@
 //  Copyright © 2017年 ylchun. All rights reserved.
 //  
 
-#import "JSExportModel.h"
+#import "JSExportProtocol.h"
 #import "JSExportManager.h"
