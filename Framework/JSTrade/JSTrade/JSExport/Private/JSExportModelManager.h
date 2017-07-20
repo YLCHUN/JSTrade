@@ -12,6 +12,7 @@
 @class WKWebView,JSExportMethod,WKUserScript;
 
 void setWebView(JSExportObject self, WKWebView *webView);
+
 WKWebView* getWebView(JSExportObject self);
 
 WKUserScript* getScriptWithKey(JSExportObject self, NSString*aKey) ;

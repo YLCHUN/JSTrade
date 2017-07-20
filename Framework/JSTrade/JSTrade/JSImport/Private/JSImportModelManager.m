@@ -19,6 +19,7 @@
 static const char *k_webView = "jsTrade_webView";
 static const char *k_spaceName = "jsTrade_spaceName";
 static const char *k_methodDict = "jsTrade_methodDict";
+
 static WKWebView *getWebView(JSImportObject self) {
     return objc_getAssociatedObject(self, sel_registerName(k_webView));
 }
@@ -114,10 +115,9 @@ static void jsTrade_addFunction(Class subClass) {
 //        setSpaceName(self, spaceName);
 //    });
 //    class_addMethod(subClass, sel_registerName("setSpaceName:"), imp_setSpaceName, "v@:@");
-
 }
 
-static Class jsTrade_forwardInvocation(id self) {
+static void jsTrade_forwardInvocation(id self) {
     NSCParameterAssert(self);
     Class selfClass = object_getClass(self);
     char buffer[2048] = "";
@@ -146,13 +146,10 @@ static Class jsTrade_forwardInvocation(id self) {
         });
         const char *encode_class = method_getTypeEncoding(method_class);
         class_replaceMethod(subClass, @selector(class), imp_class, encode_class);
-//        class_replaceMethod(object_getClass(subClass), @selector(class), imp_class, encode_class);
         objc_registerClassPair(subClass);
         jsTrade_addFunction(subClass);
     }
-    
     object_setClass(self, subClass);
-    return subClass;
 }
 
 
