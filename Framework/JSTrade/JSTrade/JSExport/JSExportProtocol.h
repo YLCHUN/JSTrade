@@ -33,7 +33,7 @@ typedef void(^JSExportCallBack) (id object);
 //           );//window.<#spaceName#>.doFoo(foo,bar);
 
 //若直接return函数方法体内需要调用js函数，需要在子线程执行或者采用[JSExportManager asyncCallJSAfterReturn:^{<#callJSCode#>}]
-//-(id)func0;                                 //var res = window.<#spaceName#>.func0();
+//-(int)func0;                                 //var res = window.<#spaceName#>.func0();
 @end
 
 typedef id<JSExportProtocol> JSExportObject;

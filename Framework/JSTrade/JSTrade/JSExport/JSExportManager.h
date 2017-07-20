@@ -25,7 +25,7 @@
  设置JSExport handler
  每次设置前会移除旧值，每次更新需要新加载页面
  
- @param anObject JSExportModel<JSExportProtocol>* 或者 Block
+ @param anObject id<JSExportProtocol> 或者 Block
  若直接return函数方法体内需要调用js函数，需要在子线程执行或者采用[JSExportManager asyncCallJSAfterReturn:^{<#callJSCode#>}]
  @param aKey model 对应objectName 或者 Block 对应的funcName
  */

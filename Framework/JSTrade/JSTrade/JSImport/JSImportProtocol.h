@@ -29,7 +29,6 @@
 @protocol JSImportBase <NSObject>
 @optional
 @property (nonatomic, weak) WKWebView *webView;
-//@required
 @property (nonatomic, readonly) NSString* spaceName;
 @end
 
