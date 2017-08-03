@@ -16,6 +16,7 @@ JSImportVar(@property(nonatomic) NSString * str);
 JSImportVar(@property(nonatomic) NSString * Str2);
 
 JSImportVarAs(ss, @property(nonatomic) NSString * str3);
+
 -(void)showMessage:(NSString*)message;
 //JSImportFunc(
 //        -(int)func0;

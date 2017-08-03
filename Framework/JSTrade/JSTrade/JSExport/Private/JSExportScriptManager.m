@@ -15,11 +15,6 @@
 #import "JSTradeCommon.h"
 #import "JSExportMessage.h"
 
-//@interface JSExportModel ()
-//@property (nonatomic, weak) WKWebView *webView;
-//-(JSExportMethod*)methodWithFuncName:(NSString*)name;
-//-(WKUserScript *)scriptWithKey:(NSString*)aKey;
-//@end
 
 static Class kNSBlock_class() {
     static Class cls;

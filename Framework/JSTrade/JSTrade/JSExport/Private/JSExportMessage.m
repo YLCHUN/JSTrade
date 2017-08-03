@@ -7,11 +7,16 @@
 //
 
 #import "JSExportMessage.h"
+
 @interface JSExportMessage ()
+
 @property (nonatomic, strong) id webView;
 @property (nonatomic, strong) NSDictionary *body;
+
 @end
+
 @implementation JSExportMessage
+
 -(instancetype)initWithWebView:(id)webView message:(id)body {
     self = [super init];
     if (self) {

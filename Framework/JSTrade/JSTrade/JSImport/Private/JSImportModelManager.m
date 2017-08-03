@@ -33,13 +33,16 @@ NSString *getSpaceName(JSImportObject self) {
 static void setSpaceName(JSImportObject self, NSString *spaceName) {
     objc_setAssociatedObject(self, sel_registerName(k_spaceName), spaceName, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
+
 NSDictionary<NSString *,JSImportMethod *> *getMethodDict(id self) {
     return objc_getAssociatedObject(self, sel_registerName(k_methodDict));
 }
 static void setMethodDict(JSImportObject self, NSDictionary<NSString *,JSImportMethod *> *methodDict) {
     objc_setAssociatedObject(self, sel_registerName(k_methodDict), methodDict, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
 #pragma mark -
+
 static const char* name_forwardFunction = "jsTrade_forwardFunction";
 static const char* name_forwardInvocation = "jsTrade_forwardInvocation:";
 
@@ -267,5 +270,7 @@ void JSTradeImportSpaceNameSet(JSImportObject self, NSString*spaceName) {
         jsTrade_forwardInvocation(self);
         jsImportMethods(self);
     }
-    setSpaceName(self, spaceName);    
+    setSpaceName(self, spaceName);
 }
+
+
