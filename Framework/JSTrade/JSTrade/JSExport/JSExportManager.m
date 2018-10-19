@@ -143,7 +143,7 @@ NSString* jsExportHandlerCode (){
         }
         NSMutableDictionary *res = [NSMutableDictionary dictionary];
         res[@"funcName"] = dict[@"funcName"];
-        res[@"result"] = [resault?resault:[NSNull alloc] init];;
+        res[@"result"] = resault?resault:[NSNull new];
         NSString *resault_json = [NSJSONSerialization serializeToJSON:res];
         completionHandler(resault_json);
     }else{

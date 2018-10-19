@@ -35,13 +35,15 @@
     NSString *jsString = jsCode;//函数转换
     __block id retuenValue;
     __block BOOL isExecuted = NO;
-    [self evaluateJavaScript:jsString completionHandler:^(id _Nullable result, NSError * _Nullable error) {
-        retuenValue = result;
-        isExecuted = YES;
-        if (error) {
-            NSLog(@"JSTrade_Error: %@ ❌ %@", [jsString containsString:kJSExport_registerKey] ? @"" : jsString, error);
-        }
-    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self evaluateJavaScript:jsString completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+            retuenValue = result;
+            isExecuted = YES;
+            if (error) {
+                NSLog(@"JSTrade_Error: %@ ❌ %@", [jsString containsString:kJSExport_registerKey] ? @"" : jsString, error);
+            }
+        }];
+    });
     while (isExecuted == NO) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
