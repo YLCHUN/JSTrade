@@ -41,9 +41,10 @@
 }
 
 -(void)func1:(id)p {
-//    id color = self.document.bgColor;
-    id i = [self.document getElementsByName:@"but1"];
-    NSLog(@"%@",i);
+    id color = self.document.bgColor;
+    NSLog(@"%@",color);
+//    id i = [self.document getElementsByName:@"but1"];//类型不支持
+//    NSLog(@"%@",i);
 }
 
 -(void)func2:(JSExportCallBack)cb {

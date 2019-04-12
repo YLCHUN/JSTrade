@@ -7,96 +7,90 @@
 //
 
 #import "NSJSONSerialization+JSTrade.h"
+#import <objc/runtime.h>
 
 @implementation NSJSONSerialization (JSTrade)
 
-+(NSDictionary*)stringDictWithDict:(NSDictionary*)dict {
+static id toValueString(id value) {
+    if (!value) return nil;
+    
+    if ([value isKindOfClass:[NSNull class]]) return nil;
+    
+    if ([value isKindOfClass:[NSString class]]) {
+        if ([value isEqualToString:@"<null>"]) return nil;
+        return value;
+    }
+    
+    if ([value isKindOfClass:[NSNumber class]]) {
+        return [NSString stringWithFormat:@"%@", value];
+    }
+    
+    if ([value isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *resDict = [NSMutableDictionary dictionary];
+        [value enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            resDict[key] = toValueString(obj);
+        }];
+        if (resDict.count == 0) return nil;
+        return resDict;
+    }
+    
+    if ([value isKindOfClass:[NSArray class]]) {
+        NSMutableArray *resArr = [NSMutableArray array];
+        [value enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            id val = toValueString(obj);
+            if (val) [resArr addObject:val];
+        }];
+        if (resArr.count == 0) return nil;
+        return resArr;
+    }
+    
     NSMutableDictionary *resDict = [NSMutableDictionary dictionary];
-    NSArray * allKeys = [dict allKeys];
-    for (id key in allKeys) {
-        id value = dict[key];
-        if ([value isKindOfClass:[NSNumber class]]) {
-            value = ((NSNumber*)value).description;
-        }else
-            if ([value isKindOfClass:[NSDictionary class]]) {
-                value = [self stringDictWithDict:value];
-            }else
-                if ([value isKindOfClass:[NSArray class]]) {
-                    value = [self stringArrWithArr:value];
-                }else
-                    if ([value isKindOfClass:[NSNull class]]) {
-                        value = @"";
-                    }else
-                        if ([value isEqualToString:@"<null>"]) {
-                            value = @"";
-                        }
-        resDict[key] = value;
+    unsigned int count = 0;
+    objc_property_t *propertyList = class_copyPropertyList([value class], &count);
+    for(int i = 0; i < count; i++) {
+        NSString *key = [NSString stringWithUTF8String:property_getName(propertyList[i])];
+        id obj = [value valueForKey:key];
+        resDict[key] = toValueString(obj);
     }
+    if (resDict.count == 0) return nil;
     return resDict;
-}
-
-+(NSArray *)stringArrWithArr:(NSArray*)arr {
-    NSMutableArray *resArr = [NSMutableArray arrayWithCapacity:arr.count];
-    for (long i = 0; i<arr.count; i++) {
-        id value = arr[i];
-        if ([value isKindOfClass:[NSNumber class]]) {
-            value = ((NSNumber*)value).description;
-        }else
-            if ([value isKindOfClass:[NSDictionary class]]) {
-                value = [self stringDictWithDict:value];
-            }else
-                if ([value isKindOfClass:[NSArray class]]) {
-                    value = [self stringArrWithArr:value];
-                }else
-                    if ([value isEqualToString:@"<null>"]) {
-                        value = @"";
-                    }
-        resArr[i] = value;
-    }
-    return resArr;
 }
 
 + (id)unserializeJSON:(NSString *)jsonString toStringValue:(BOOL)toStringValue {
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    if (jsonData.length == 0)  return nil;
+    
     NSError *error = nil;
-    if (!jsonData) {
-        return nil;
-    }
     id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
-    if (jsonObject != nil && error == nil){
-        if (toStringValue) {
-            if ([jsonObject isKindOfClass:[NSArray class]]) {
-                jsonObject = [self stringArrWithArr:jsonObject];
-            }
-            if ([jsonObject isKindOfClass:[NSDictionary class]]) {
-                jsonObject = [self stringDictWithDict:jsonObject];
-            }
-        }
-        return jsonObject;
-    }else{
+    if (error) {// 解析错误
         NSLog(@"unserializeJSON: %@ \n\neror: %@",jsonString, error.description);
-        // 解析错误
         return nil;
     }
+    if (toStringValue) {
+        return toValueString(jsonObject);
+    }
+    return jsonObject;
 }
 
 
 + (NSString*)serializeToJSON:(id)dictOrArr {
-    NSError *error;
     NSString *jsonString = @"";
     @try {
+        NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictOrArr options:0 error:&error];
-        if (jsonData){
+        if (error) {
+            NSLog(@"unserializeToJSON: %@ \n\neror: %@",dictOrArr, error.description);
+        }
+        else if (jsonData.length > 0){
             jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];  //去除掉首尾的空白字符和换行字符
+            jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];//去除掉首尾的空白字符和换行字符
         }
     } @catch (NSException *exception) {
         //object类型需要手动转换成NSDictionary
         [exception raise];
     } @finally {
-        
+        return jsonString;
     }
-    return jsonString;
 }
 
 @end

@@ -158,6 +158,7 @@
 				TargetAttributes = {
 					A94638601EDAAAA1006F94A0 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = V6QCEN324A;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -354,11 +355,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V6QCEN324A;
 				INFOPLIST_FILE = WKWebView_JSTrade/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ylchun.WKWebView-JSTrade";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lrlz.JSTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -367,11 +368,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V6QCEN324A;
 				INFOPLIST_FILE = WKWebView_JSTrade/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ylchun.WKWebView-JSTrade";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lrlz.JSTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

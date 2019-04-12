@@ -43,19 +43,20 @@ static Class kNSBlock_class() {
         jsExportScriptManager.jsExportModel = anObject;
         jsExportScriptManager.key = aKey;
         return jsExportScriptManager;
-    }else
-        if ([anObject isKindOfClass:kNSBlock_class()]) {
-            JSExportMethod * method =[JSExportMethod methWithTarget:anObject];
-            method.jsFuncName = aKey;
-            JSExportScriptManager *jsExportScriptManager = [[self alloc] init];
-            jsExportScriptManager.jsExportMethod = method;
-            jsExportScriptManager.key = method.jsFuncName;
-            return jsExportScriptManager;
-        }else {
-            NSString *error = [NSString stringWithFormat:@"handler类型错误，请检查%@", anObject];
-            [[NSException exceptionWithName:@"JSExport Error" reason:error userInfo:nil] raise];
-            return nil;
-        }
+    }
+    else if ([anObject isKindOfClass:kNSBlock_class()]) {
+        JSExportMethod * method = [JSExportMethod methWithTarget:anObject];
+        method.jsFuncName = aKey;
+        JSExportScriptManager *jsExportScriptManager = [[self alloc] init];
+        jsExportScriptManager.jsExportMethod = method;
+        jsExportScriptManager.key = method.jsFuncName;
+        return jsExportScriptManager;
+    }
+    else {
+        NSString *error = [NSString stringWithFormat:@"handler类型错误，请检查%@", anObject];
+        [[NSException exceptionWithName:@"JSExport Error" reason:error userInfo:nil] raise];
+        return nil;
+    }
 }
 
 #pragma mark - GET SET
@@ -100,7 +101,7 @@ static Class kNSBlock_class() {
 
 -(JSExportCallBack)jsExportCallBackWithMessage:(NSDictionary*)message webView:(WKWebView*)webView {
     NSString *spaceName = message[@"spaceName"];
-    NSString* funcName = message[@"funcName"];
+    NSString *funcName = message[@"funcName"];
     JSExportCallBack callBack = ^(id param){
         NSDictionary *dict = @{@"spaceName":spaceName, @"funcName":funcName, @"param":param};
         NSString *jsCode = [NSString stringWithFormat:@"%@.callBack", kJSExport_registerKey];

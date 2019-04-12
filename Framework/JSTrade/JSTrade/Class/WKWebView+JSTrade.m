@@ -56,21 +56,22 @@
         id p = arguments[i];
         if ([p isKindOfClass:[NSString class]]) {
             [arr addObject:[NSString stringWithFormat:@"'%@'", p]];
-        }else
-            if ([p isKindOfClass:[NSNumber class]]) {
-                [arr addObject:[NSString stringWithFormat:@"%@", p]];
-            }else
-                if ([p isKindOfClass:[NSNull class]]) {
-                    [arr addObject:@"null"];
-                }else
-                    if ([p isKindOfClass:[NSArray class]] || [p isKindOfClass:[NSDictionary class]]) {
-                        [arr addObject:[NSJSONSerialization serializeToJSON:p]];
-                    }else {
-                        NSString *tmp = [NSJSONSerialization serializeToJSON:@[p]];
-                        NSRange range= NSMakeRange(1,tmp.length-2);
-                        tmp = [tmp substringWithRange:range];
-                        [arr addObject:tmp];
-                    }
+        }
+        else if ([p isKindOfClass:[NSNumber class]]) {
+            [arr addObject:[NSString stringWithFormat:@"%@", p]];
+        }
+        else if ([p isKindOfClass:[NSNull class]]) {
+            [arr addObject:@"null"];
+        }
+        else if ([p isKindOfClass:[NSArray class]] || [p isKindOfClass:[NSDictionary class]]) {
+            [arr addObject:[NSJSONSerialization serializeToJSON:p]];
+        }
+        else {
+            NSString *tmp = [NSJSONSerialization serializeToJSON:@[p]];
+            NSRange range= NSMakeRange(1,tmp.length-2);
+            tmp = [tmp substringWithRange:range];
+            [arr addObject:tmp];
+        }
         
     }
     NSString *paramsJSON = [arr componentsJoinedByString:@","];
