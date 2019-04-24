@@ -1,0 +1,6 @@
+framework module JSTrade {
+  umbrella header "JSTrade-umbrella.h"
+
+  export *
+  module * { export * }
+}

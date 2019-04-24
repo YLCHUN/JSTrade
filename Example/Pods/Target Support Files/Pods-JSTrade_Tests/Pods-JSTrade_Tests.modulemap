@@ -1,0 +1,6 @@
+framework module Pods_JSTrade_Tests {
+  umbrella header "Pods-JSTrade_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

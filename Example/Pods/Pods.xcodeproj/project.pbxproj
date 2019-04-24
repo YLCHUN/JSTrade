@@ -1,0 +1,936 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03FA10930F61DB8BAEDFE1B2BBE5DE85 /* JSExportMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 144BDA49BC565A97C58C9FFA0EDA3E91 /* JSExportMessage.m */; };
+		0CA6AD0C91AB92CDB36323A903419A24 /* Pods-JSTrade_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ACB6F8643414E36B188982BF4839AC94 /* Pods-JSTrade_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1463D59A0570D2AA01A6098BD75EA4EE /* Pods-JSTrade_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C902E01D33454447802F48B96EE1647D /* Pods-JSTrade_Tests-dummy.m */; };
+		17510659E45F4BF8F49E3D5F502FDE0B /* JSExport.h in Headers */ = {isa = PBXBuildFile; fileRef = D50D551A4EE6F9F8DABF32C4C2134DB4 /* JSExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24D1BE39110398D1E78A52B26AA681A6 /* JSImportModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D1805D37655D7272B6ACE4BC621A7EB2 /* JSImportModelManager.m */; };
+		38D2A0598E94EC62FF41DA362A09056E /* JSImportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9069BDA431F366BECEAB11B75A1A9515 /* JSImportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39FF3FDFFC37F335C87D6F8346AB8BCF /* NSJSONSerialization+JSTrade.h in Headers */ = {isa = PBXBuildFile; fileRef = 1646133FD6E054073758B6C41A834333 /* NSJSONSerialization+JSTrade.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FFC9ED2E7859C734A6B76E66550D5B1 /* JSTradeRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7586A39F09578AEE6AB590564BBDD5 /* JSTradeRuntime.m */; };
+		43AB21F26D2960C1C25315CD9AE35A3D /* JSTradeSourceShield.h in Headers */ = {isa = PBXBuildFile; fileRef = 89481A26EE33EB3271752901CDFC353F /* JSTradeSourceShield.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		444325AE40F8E96EE0C7D36AA62254EE /* JSImportMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 93676A3EE25B61DEB51D93788269949F /* JSImportMethod.m */; };
+		4DEF879EB5E53C9F4157E067F6C4C694 /* JSExportMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1864653BC808F213E14338C6CD87B218 /* JSExportMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50FA5CEC955D33411CF4E68D2CD5075F /* JSExportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BB29E908D741217CFD4DE2B39827C2 /* JSExportManager.m */; };
+		568B2199C0FCD6EE5DF24B642327244C /* JSExportScriptManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ACB268235F4112853437AD4D4899CEA /* JSExportScriptManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60B0303CCAEFDDE55066627C8EBE9634 /* JSExportModelManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D1F463CDE94E4CD0D3ACAEA000982F3 /* JSExportModelManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6231E285490A074FC5139A67BA832CC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		6408036CA84F5C80D586DE155E8CA1FA /* JSTradeCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = F8182D440C5D74B18291AFAAAD5D249F /* JSTradeCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DE41303BDD4979905720332D60C2451 /* JSTrade-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4308180CE851B6EDBFDCB114F26A8F /* JSTrade-dummy.m */; };
+		6EA0EF19F459611A39819FC08D8000C7 /* JSImportMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E20EFC894198E489CE33B24A2AA461D /* JSImportMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F04671D1A49F99731944D48C8543182 /* WKWebView+JSTrade.h in Headers */ = {isa = PBXBuildFile; fileRef = A308E572EE4DB752A851953DF99369F0 /* WKWebView+JSTrade.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7055C2CC221C90B9C4F2A4272714D88F /* JSExportMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 65AF915C0EF2964BFF6259F8186CFBB7 /* JSExportMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7D07CD8D02EFEAD6F8478431D408641B /* JSTradeSourceShield.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3BA81B792F7507A6F198330ED98971 /* JSTradeSourceShield.m */; };
+		802EC8F9060A5E9E85FFE3B5800421B2 /* JSImportModelManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F9512EEB058BB981F686CBD8A02582F /* JSImportModelManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81D4A13E1D9FD323C04A13E588CE81A6 /* Pods-JSTrade_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E771CF6DCC07258CF15C956D5F6B718 /* Pods-JSTrade_Example-dummy.m */; };
+		8410974390D518BF3C25BDFC6FC703A6 /* Pods-JSTrade_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC34D976CE89CEF0B998AE40BF5A8FF /* Pods-JSTrade_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C4B1A96D0CA83918C22FDAA1D7FFD45 /* JSTradeRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = AB942B566F0ABAD30F00063F3783B8C9 /* JSTradeRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		942D193A74739C79A8D2B806C63A8919 /* JSExportManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 37853A44A97501CE9C1FE263DF0DDFA8 /* JSExportManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C553DBDCD13D77A99A0FFE22F8D3B9C /* JSExportMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 8716FB2739B347758A4A5B6E1E2E3C66 /* JSExportMethod.m */; };
+		AD4A7450121303E335E16D2B15E25F61 /* NSJSONSerialization+JSTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = EF9BB337F76AED40A4F06753018E7C61 /* NSJSONSerialization+JSTrade.m */; };
+		AD712AAA5A77C6F3B82087F2FA839927 /* NSMethodSignature+JSTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 11779370AAAD1A55FE1A6884C54D64FD /* NSMethodSignature+JSTrade.m */; };
+		B30F587AABE6C3B26552A2120C2F0124 /* JSTrade.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CFECB92A1A940A57BA18DC2E8678A1B /* JSTrade.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3309026FA1DE8DF74CE017872DED0AF /* JSImport.h in Headers */ = {isa = PBXBuildFile; fileRef = E864C1F22FBB3053CFF1B770A077992C /* JSImport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB463E1CCD2926C179BF193B59E63C89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		D2C55ECB0A7A277CC73D05AC55EA102B /* JSTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CD72D80B63F301360186F9E26A2790 /* JSTrade.m */; };
+		D355B5308FF09879435C729ED4D39124 /* NSMethodSignature+JSTrade.h in Headers */ = {isa = PBXBuildFile; fileRef = D289503C2857BE8D7ADF69A16EBF491E /* NSMethodSignature+JSTrade.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9DADD7FA10FA8D7C23BBD418B564CD1 /* JSExportModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A351400FCEDE6F1BF68DC23AA6FE3F /* JSExportModelManager.m */; };
+		DA03502C697AB2C21061B8D8476522CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		DC850C48CE364A51CA2F0181EC962AB8 /* JSExportScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF35B2DB5F10AA069C16ECB5211BC4F /* JSExportScriptManager.m */; };
+		E29339C5E6D3E200CF7C2D4EC91451CF /* WKWebView+JSTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CC989858B1910C749E799DF62D34C /* WKWebView+JSTrade.m */; };
+		EFD5AF24E92D2E94BF6390046814DCDA /* JSTrade-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A50FD52CCB247D6B7B017CBE6BC75234 /* JSTrade-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA67B2C5990FDE4DF31F36D9E53A7C77 /* JSExportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA40C03F942D8ABB857ACCC2617099C /* JSExportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A2B6156246151ACD86B9214E006B3BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94BBA9DF10F9AA5E2907F6C8A6EE9932;
+			remoteInfo = JSTrade;
+		};
+		5364A6AB9ADD2CC906DA76C4F8909CA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35D5EF8FD7B7A82C91256F2A09507ED8;
+			remoteInfo = "Pods-JSTrade_Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		09D0715BB7019BC3E13BDBE96AB2AEFB /* JSTrade.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = JSTrade.podspec; sourceTree = "<group>"; tabWidth = 2; };
+		11779370AAAD1A55FE1A6884C54D64FD /* NSMethodSignature+JSTrade.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSMethodSignature+JSTrade.m"; sourceTree = "<group>"; };
+		144BDA49BC565A97C58C9FFA0EDA3E91 /* JSExportMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSExportMessage.m; sourceTree = "<group>"; };
+		162554C78CA606935F5D94764303E6B9 /* JSTrade.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSTrade.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1646133FD6E054073758B6C41A834333 /* NSJSONSerialization+JSTrade.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+JSTrade.h"; sourceTree = "<group>"; };
+		1864653BC808F213E14338C6CD87B218 /* JSExportMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSExportMessage.h; sourceTree = "<group>"; };
+		1C566C28CEAB558D8929D687E1194901 /* Pods-JSTrade_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JSTrade_Example.release.xcconfig"; sourceTree = "<group>"; };
+		1CFECB92A1A940A57BA18DC2E8678A1B /* JSTrade.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSTrade.h; path = JSTrade/Classes/JSTrade.h; sourceTree = "<group>"; };
+		1E771CF6DCC07258CF15C956D5F6B718 /* Pods-JSTrade_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JSTrade_Example-dummy.m"; sourceTree = "<group>"; };
+		1F9512EEB058BB981F686CBD8A02582F /* JSImportModelManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSImportModelManager.h; sourceTree = "<group>"; };
+		24A351400FCEDE6F1BF68DC23AA6FE3F /* JSExportModelManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSExportModelManager.m; sourceTree = "<group>"; };
+		2964A7D3A31B09E0C8FB4F03BCEBC4A4 /* Pods-JSTrade_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JSTrade_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		2E20EFC894198E489CE33B24A2AA461D /* JSImportMethod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSImportMethod.h; sourceTree = "<group>"; };
+		362BB3BC572A42E243DBD0C7A1DFA22E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		37853A44A97501CE9C1FE263DF0DDFA8 /* JSExportManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSExportManager.h; sourceTree = "<group>"; };
+		3E4144A09A4A4757A4640A3FF38521EC /* Pods_JSTrade_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSTrade_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F3BA81B792F7507A6F198330ED98971 /* JSTradeSourceShield.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSTradeSourceShield.m; sourceTree = "<group>"; };
+		43BB29E908D741217CFD4DE2B39827C2 /* JSExportManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSExportManager.m; sourceTree = "<group>"; };
+		4548FD20A5C2DD6A15A76125DC9944E8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4A00A3D0C1709D5CB6AEE1EA4DF8D8A3 /* JSTrade-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JSTrade-Info.plist"; sourceTree = "<group>"; };
+		4D1F463CDE94E4CD0D3ACAEA000982F3 /* JSExportModelManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSExportModelManager.h; sourceTree = "<group>"; };
+		4F5CC989858B1910C749E799DF62D34C /* WKWebView+JSTrade.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+JSTrade.m"; sourceTree = "<group>"; };
+		51978F5B446E22492431877AB8A00AF2 /* JSTrade-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JSTrade-prefix.pch"; sourceTree = "<group>"; };
+		52BD9E03AACAC5C5F4353F794916BE9E /* Pods-JSTrade_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JSTrade_Tests-Info.plist"; sourceTree = "<group>"; };
+		5D0DA225CEACE22A368FF760108CC5FE /* Pods-JSTrade_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JSTrade_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5E7586A39F09578AEE6AB590564BBDD5 /* JSTradeRuntime.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSTradeRuntime.m; sourceTree = "<group>"; };
+		65AF915C0EF2964BFF6259F8186CFBB7 /* JSExportMethod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSExportMethod.h; sourceTree = "<group>"; };
+		6ACB268235F4112853437AD4D4899CEA /* JSExportScriptManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSExportScriptManager.h; sourceTree = "<group>"; };
+		71205E60F0FAA6EB7E4AFB0472F70EAE /* Pods_JSTrade_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSTrade_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73CD72D80B63F301360186F9E26A2790 /* JSTrade.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSTrade.m; path = JSTrade/Classes/JSTrade.m; sourceTree = "<group>"; };
+		8716FB2739B347758A4A5B6E1E2E3C66 /* JSExportMethod.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSExportMethod.m; sourceTree = "<group>"; };
+		89481A26EE33EB3271752901CDFC353F /* JSTradeSourceShield.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSTradeSourceShield.h; sourceTree = "<group>"; };
+		8C3D8DAB057ED07BD29C4584DFD65CF3 /* Pods-JSTrade_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JSTrade_Example.modulemap"; sourceTree = "<group>"; };
+		8F4308180CE851B6EDBFDCB114F26A8F /* JSTrade-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JSTrade-dummy.m"; sourceTree = "<group>"; };
+		9069BDA431F366BECEAB11B75A1A9515 /* JSImportProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSImportProtocol.h; sourceTree = "<group>"; };
+		907C5599A1FAAC95607E4F4F4A5214E0 /* Pods-JSTrade_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JSTrade_Tests.modulemap"; sourceTree = "<group>"; };
+		93676A3EE25B61DEB51D93788269949F /* JSImportMethod.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSImportMethod.m; sourceTree = "<group>"; };
+		9BC34D976CE89CEF0B998AE40BF5A8FF /* Pods-JSTrade_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JSTrade_Tests-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F6840404FBFD9027E6CD8C32C92036E /* JSTrade.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JSTrade.xcconfig; sourceTree = "<group>"; };
+		A308E572EE4DB752A851953DF99369F0 /* WKWebView+JSTrade.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WKWebView+JSTrade.h"; sourceTree = "<group>"; };
+		A40768CB750B477B5198F85B8DBC84BF /* Pods-JSTrade_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JSTrade_Example-Info.plist"; sourceTree = "<group>"; };
+		A50FD52CCB247D6B7B017CBE6BC75234 /* JSTrade-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JSTrade-umbrella.h"; sourceTree = "<group>"; };
+		A5E987882DE2A2A4EE648295C1707B30 /* Pods-JSTrade_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JSTrade_Example-frameworks.sh"; sourceTree = "<group>"; };
+		AB942B566F0ABAD30F00063F3783B8C9 /* JSTradeRuntime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSTradeRuntime.h; sourceTree = "<group>"; };
+		ACB6F8643414E36B188982BF4839AC94 /* Pods-JSTrade_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JSTrade_Example-umbrella.h"; sourceTree = "<group>"; };
+		ACF35B2DB5F10AA069C16ECB5211BC4F /* JSExportScriptManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSExportScriptManager.m; sourceTree = "<group>"; };
+		B67402AEED4399D3149311D407A29F49 /* Pods-JSTrade_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JSTrade_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		BAF8256FBF326BF699373A4FF2373DFA /* Pods-JSTrade_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JSTrade_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BCA29D74E42FB37FF81AE7D89835CAA0 /* Pods-JSTrade_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JSTrade_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		C06D58DB5A48E664E1DB5BE0B1ED9362 /* Pods-JSTrade_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JSTrade_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		C902E01D33454447802F48B96EE1647D /* Pods-JSTrade_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JSTrade_Tests-dummy.m"; sourceTree = "<group>"; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CFA40C03F942D8ABB857ACCC2617099C /* JSExportProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSExportProtocol.h; sourceTree = "<group>"; };
+		D1805D37655D7272B6ACE4BC621A7EB2 /* JSImportModelManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSImportModelManager.m; sourceTree = "<group>"; };
+		D289503C2857BE8D7ADF69A16EBF491E /* NSMethodSignature+JSTrade.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSMethodSignature+JSTrade.h"; sourceTree = "<group>"; };
+		D4AC505BB93B6032F21E142FEBCCC1BC /* Pods-JSTrade_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JSTrade_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		D50D551A4EE6F9F8DABF32C4C2134DB4 /* JSExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSExport.h; sourceTree = "<group>"; };
+		E864C1F22FBB3053CFF1B770A077992C /* JSImport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSImport.h; sourceTree = "<group>"; };
+		EDBCB157CF379AE49B20194E2C80FB99 /* JSTrade.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JSTrade.modulemap; sourceTree = "<group>"; };
+		EF9BB337F76AED40A4F06753018E7C61 /* NSJSONSerialization+JSTrade.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+JSTrade.m"; sourceTree = "<group>"; };
+		F8182D440C5D74B18291AFAAAD5D249F /* JSTradeCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSTradeCommon.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40A74E7996EC98DF9AC16838FE237784 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA03502C697AB2C21061B8D8476522CC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80722A15F371A4C743767A7FD1AB9D81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6231E285490A074FC5139A67BA832CC8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88E3078EC1CDAA3FDD25D4654A518F85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB463E1CCD2926C179BF193B59E63C89 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		403C7386CFC08BEA6B22FC9D77482586 /* JSTrade */ = {
+			isa = PBXGroup;
+			children = (
+				1CFECB92A1A940A57BA18DC2E8678A1B /* JSTrade.h */,
+				73CD72D80B63F301360186F9E26A2790 /* JSTrade.m */,
+				495376EBDC1CBFFA9CA4CE6B1D80600E /* JSTrade */,
+				79A45719446B25E00B7AB3B1CC7ECEB9 /* Pod */,
+				C5A82D216C8652D5736DE72136D2D39B /* Support Files */,
+			);
+			name = JSTrade;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		495376EBDC1CBFFA9CA4CE6B1D80600E /* JSTrade */ = {
+			isa = PBXGroup;
+			children = (
+				B8BA320C3D20B88D5D34EC77E2D0A5DE /* Class */,
+				5832ABE4E13FAC7482FC63C98AE238D1 /* JSExport */,
+				AF0567E5C026FE4CE8ECECC7EF5F8CFA /* JSImport */,
+			);
+			name = JSTrade;
+			path = JSTrade/Classes/JSTrade;
+			sourceTree = "<group>";
+		};
+		4D048ECC1EEA0892AAEC57DCFF1777CD /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				1864653BC808F213E14338C6CD87B218 /* JSExportMessage.h */,
+				144BDA49BC565A97C58C9FFA0EDA3E91 /* JSExportMessage.m */,
+				65AF915C0EF2964BFF6259F8186CFBB7 /* JSExportMethod.h */,
+				8716FB2739B347758A4A5B6E1E2E3C66 /* JSExportMethod.m */,
+				4D1F463CDE94E4CD0D3ACAEA000982F3 /* JSExportModelManager.h */,
+				24A351400FCEDE6F1BF68DC23AA6FE3F /* JSExportModelManager.m */,
+				6ACB268235F4112853437AD4D4899CEA /* JSExportScriptManager.h */,
+				ACF35B2DB5F10AA069C16ECB5211BC4F /* JSExportScriptManager.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		5832ABE4E13FAC7482FC63C98AE238D1 /* JSExport */ = {
+			isa = PBXGroup;
+			children = (
+				D50D551A4EE6F9F8DABF32C4C2134DB4 /* JSExport.h */,
+				37853A44A97501CE9C1FE263DF0DDFA8 /* JSExportManager.h */,
+				43BB29E908D741217CFD4DE2B39827C2 /* JSExportManager.m */,
+				CFA40C03F942D8ABB857ACCC2617099C /* JSExportProtocol.h */,
+				4D048ECC1EEA0892AAEC57DCFF1777CD /* Private */,
+			);
+			path = JSExport;
+			sourceTree = "<group>";
+		};
+		5EE96CD1740A6A9D2E74E8AB21AEB469 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F5788D4175BC3C59EC053CAE7C58DC4B /* Pods-JSTrade_Example */,
+				9666F826280E3CDF7C662BB8C8AC85E9 /* Pods-JSTrade_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		6D3342CD7C69B3041F1F42A22DCD430C /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				2E20EFC894198E489CE33B24A2AA461D /* JSImportMethod.h */,
+				93676A3EE25B61DEB51D93788269949F /* JSImportMethod.m */,
+				1F9512EEB058BB981F686CBD8A02582F /* JSImportModelManager.h */,
+				D1805D37655D7272B6ACE4BC621A7EB2 /* JSImportModelManager.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		79A45719446B25E00B7AB3B1CC7ECEB9 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				09D0715BB7019BC3E13BDBE96AB2AEFB /* JSTrade.podspec */,
+				362BB3BC572A42E243DBD0C7A1DFA22E /* LICENSE */,
+				4548FD20A5C2DD6A15A76125DC9944E8 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		9666F826280E3CDF7C662BB8C8AC85E9 /* Pods-JSTrade_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				907C5599A1FAAC95607E4F4F4A5214E0 /* Pods-JSTrade_Tests.modulemap */,
+				5D0DA225CEACE22A368FF760108CC5FE /* Pods-JSTrade_Tests-acknowledgements.markdown */,
+				C06D58DB5A48E664E1DB5BE0B1ED9362 /* Pods-JSTrade_Tests-acknowledgements.plist */,
+				C902E01D33454447802F48B96EE1647D /* Pods-JSTrade_Tests-dummy.m */,
+				52BD9E03AACAC5C5F4353F794916BE9E /* Pods-JSTrade_Tests-Info.plist */,
+				9BC34D976CE89CEF0B998AE40BF5A8FF /* Pods-JSTrade_Tests-umbrella.h */,
+				BCA29D74E42FB37FF81AE7D89835CAA0 /* Pods-JSTrade_Tests.debug.xcconfig */,
+				2964A7D3A31B09E0C8FB4F03BCEBC4A4 /* Pods-JSTrade_Tests.release.xcconfig */,
+			);
+			name = "Pods-JSTrade_Tests";
+			path = "Target Support Files/Pods-JSTrade_Tests";
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		A7867056F7293F1A6178601DB759011A /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				403C7386CFC08BEA6B22FC9D77482586 /* JSTrade */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		AF0567E5C026FE4CE8ECECC7EF5F8CFA /* JSImport */ = {
+			isa = PBXGroup;
+			children = (
+				E864C1F22FBB3053CFF1B770A077992C /* JSImport.h */,
+				9069BDA431F366BECEAB11B75A1A9515 /* JSImportProtocol.h */,
+				6D3342CD7C69B3041F1F42A22DCD430C /* Private */,
+			);
+			path = JSImport;
+			sourceTree = "<group>";
+		};
+		B8BA320C3D20B88D5D34EC77E2D0A5DE /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				F8182D440C5D74B18291AFAAAD5D249F /* JSTradeCommon.h */,
+				AB942B566F0ABAD30F00063F3783B8C9 /* JSTradeRuntime.h */,
+				5E7586A39F09578AEE6AB590564BBDD5 /* JSTradeRuntime.m */,
+				89481A26EE33EB3271752901CDFC353F /* JSTradeSourceShield.h */,
+				3F3BA81B792F7507A6F198330ED98971 /* JSTradeSourceShield.m */,
+				1646133FD6E054073758B6C41A834333 /* NSJSONSerialization+JSTrade.h */,
+				EF9BB337F76AED40A4F06753018E7C61 /* NSJSONSerialization+JSTrade.m */,
+				D289503C2857BE8D7ADF69A16EBF491E /* NSMethodSignature+JSTrade.h */,
+				11779370AAAD1A55FE1A6884C54D64FD /* NSMethodSignature+JSTrade.m */,
+				A308E572EE4DB752A851953DF99369F0 /* WKWebView+JSTrade.h */,
+				4F5CC989858B1910C749E799DF62D34C /* WKWebView+JSTrade.m */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		C5A82D216C8652D5736DE72136D2D39B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EDBCB157CF379AE49B20194E2C80FB99 /* JSTrade.modulemap */,
+				9F6840404FBFD9027E6CD8C32C92036E /* JSTrade.xcconfig */,
+				8F4308180CE851B6EDBFDCB114F26A8F /* JSTrade-dummy.m */,
+				4A00A3D0C1709D5CB6AEE1EA4DF8D8A3 /* JSTrade-Info.plist */,
+				51978F5B446E22492431877AB8A00AF2 /* JSTrade-prefix.pch */,
+				A50FD52CCB247D6B7B017CBE6BC75234 /* JSTrade-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/JSTrade";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				A7867056F7293F1A6178601DB759011A /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				DCBB6D088E7B8EE0FCE624B659D4F221 /* Products */,
+				5EE96CD1740A6A9D2E74E8AB21AEB469 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCBB6D088E7B8EE0FCE624B659D4F221 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				162554C78CA606935F5D94764303E6B9 /* JSTrade.framework */,
+				3E4144A09A4A4757A4640A3FF38521EC /* Pods_JSTrade_Example.framework */,
+				71205E60F0FAA6EB7E4AFB0472F70EAE /* Pods_JSTrade_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5788D4175BC3C59EC053CAE7C58DC4B /* Pods-JSTrade_Example */ = {
+			isa = PBXGroup;
+			children = (
+				8C3D8DAB057ED07BD29C4584DFD65CF3 /* Pods-JSTrade_Example.modulemap */,
+				BAF8256FBF326BF699373A4FF2373DFA /* Pods-JSTrade_Example-acknowledgements.markdown */,
+				B67402AEED4399D3149311D407A29F49 /* Pods-JSTrade_Example-acknowledgements.plist */,
+				1E771CF6DCC07258CF15C956D5F6B718 /* Pods-JSTrade_Example-dummy.m */,
+				A5E987882DE2A2A4EE648295C1707B30 /* Pods-JSTrade_Example-frameworks.sh */,
+				A40768CB750B477B5198F85B8DBC84BF /* Pods-JSTrade_Example-Info.plist */,
+				ACB6F8643414E36B188982BF4839AC94 /* Pods-JSTrade_Example-umbrella.h */,
+				D4AC505BB93B6032F21E142FEBCCC1BC /* Pods-JSTrade_Example.debug.xcconfig */,
+				1C566C28CEAB558D8929D687E1194901 /* Pods-JSTrade_Example.release.xcconfig */,
+			);
+			name = "Pods-JSTrade_Example";
+			path = "Target Support Files/Pods-JSTrade_Example";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2018921E17525A27B9A42D24C1E0282D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CA6AD0C91AB92CDB36323A903419A24 /* Pods-JSTrade_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80DA82CB0CC18A274DC39F1943DB5873 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8410974390D518BF3C25BDFC6FC703A6 /* Pods-JSTrade_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBE29AAB6307C27D3001A03746C87EC0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17510659E45F4BF8F49E3D5F502FDE0B /* JSExport.h in Headers */,
+				942D193A74739C79A8D2B806C63A8919 /* JSExportManager.h in Headers */,
+				4DEF879EB5E53C9F4157E067F6C4C694 /* JSExportMessage.h in Headers */,
+				7055C2CC221C90B9C4F2A4272714D88F /* JSExportMethod.h in Headers */,
+				60B0303CCAEFDDE55066627C8EBE9634 /* JSExportModelManager.h in Headers */,
+				FA67B2C5990FDE4DF31F36D9E53A7C77 /* JSExportProtocol.h in Headers */,
+				568B2199C0FCD6EE5DF24B642327244C /* JSExportScriptManager.h in Headers */,
+				C3309026FA1DE8DF74CE017872DED0AF /* JSImport.h in Headers */,
+				6EA0EF19F459611A39819FC08D8000C7 /* JSImportMethod.h in Headers */,
+				802EC8F9060A5E9E85FFE3B5800421B2 /* JSImportModelManager.h in Headers */,
+				38D2A0598E94EC62FF41DA362A09056E /* JSImportProtocol.h in Headers */,
+				EFD5AF24E92D2E94BF6390046814DCDA /* JSTrade-umbrella.h in Headers */,
+				B30F587AABE6C3B26552A2120C2F0124 /* JSTrade.h in Headers */,
+				6408036CA84F5C80D586DE155E8CA1FA /* JSTradeCommon.h in Headers */,
+				8C4B1A96D0CA83918C22FDAA1D7FFD45 /* JSTradeRuntime.h in Headers */,
+				43AB21F26D2960C1C25315CD9AE35A3D /* JSTradeSourceShield.h in Headers */,
+				39FF3FDFFC37F335C87D6F8346AB8BCF /* NSJSONSerialization+JSTrade.h in Headers */,
+				D355B5308FF09879435C729ED4D39124 /* NSMethodSignature+JSTrade.h in Headers */,
+				6F04671D1A49F99731944D48C8543182 /* WKWebView+JSTrade.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		26B6CE3E648F1F8C57661461C9E169E2 /* Pods-JSTrade_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F60D9E8F3607A27BBC1D99086CFFE89 /* Build configuration list for PBXNativeTarget "Pods-JSTrade_Tests" */;
+			buildPhases = (
+				80DA82CB0CC18A274DC39F1943DB5873 /* Headers */,
+				0440B8619675017FF626D29C5A02E485 /* Sources */,
+				80722A15F371A4C743767A7FD1AB9D81 /* Frameworks */,
+				28B70F8C2DBEAB721757B9A2EEE63CA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01F629B4A8754BBE3CE1A7FF665480FE /* PBXTargetDependency */,
+			);
+			name = "Pods-JSTrade_Tests";
+			productName = "Pods-JSTrade_Tests";
+			productReference = 71205E60F0FAA6EB7E4AFB0472F70EAE /* Pods_JSTrade_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		35D5EF8FD7B7A82C91256F2A09507ED8 /* Pods-JSTrade_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FC108FE0F3D0CF2BCB60B1752DF29BB /* Build configuration list for PBXNativeTarget "Pods-JSTrade_Example" */;
+			buildPhases = (
+				2018921E17525A27B9A42D24C1E0282D /* Headers */,
+				20542641E2323560121DA37D2D3FD492 /* Sources */,
+				88E3078EC1CDAA3FDD25D4654A518F85 /* Frameworks */,
+				77A5FCD48002AEE26791221EC1F001F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00A854B8FEF8C42585EB931D84790EFE /* PBXTargetDependency */,
+			);
+			name = "Pods-JSTrade_Example";
+			productName = "Pods-JSTrade_Example";
+			productReference = 3E4144A09A4A4757A4640A3FF38521EC /* Pods_JSTrade_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		94BBA9DF10F9AA5E2907F6C8A6EE9932 /* JSTrade */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46B58EF014C933CD916E35D876F8AA26 /* Build configuration list for PBXNativeTarget "JSTrade" */;
+			buildPhases = (
+				DBE29AAB6307C27D3001A03746C87EC0 /* Headers */,
+				30E102E7A42A061204D27636C5F07819 /* Sources */,
+				40A74E7996EC98DF9AC16838FE237784 /* Frameworks */,
+				A944FF5926AC087291ABAEF11FAFDA56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JSTrade;
+			productName = JSTrade;
+			productReference = 162554C78CA606935F5D94764303E6B9 /* JSTrade.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = DCBB6D088E7B8EE0FCE624B659D4F221 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				94BBA9DF10F9AA5E2907F6C8A6EE9932 /* JSTrade */,
+				35D5EF8FD7B7A82C91256F2A09507ED8 /* Pods-JSTrade_Example */,
+				26B6CE3E648F1F8C57661461C9E169E2 /* Pods-JSTrade_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28B70F8C2DBEAB721757B9A2EEE63CA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77A5FCD48002AEE26791221EC1F001F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A944FF5926AC087291ABAEF11FAFDA56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0440B8619675017FF626D29C5A02E485 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1463D59A0570D2AA01A6098BD75EA4EE /* Pods-JSTrade_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20542641E2323560121DA37D2D3FD492 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81D4A13E1D9FD323C04A13E588CE81A6 /* Pods-JSTrade_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30E102E7A42A061204D27636C5F07819 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50FA5CEC955D33411CF4E68D2CD5075F /* JSExportManager.m in Sources */,
+				03FA10930F61DB8BAEDFE1B2BBE5DE85 /* JSExportMessage.m in Sources */,
+				9C553DBDCD13D77A99A0FFE22F8D3B9C /* JSExportMethod.m in Sources */,
+				D9DADD7FA10FA8D7C23BBD418B564CD1 /* JSExportModelManager.m in Sources */,
+				DC850C48CE364A51CA2F0181EC962AB8 /* JSExportScriptManager.m in Sources */,
+				444325AE40F8E96EE0C7D36AA62254EE /* JSImportMethod.m in Sources */,
+				24D1BE39110398D1E78A52B26AA681A6 /* JSImportModelManager.m in Sources */,
+				6DE41303BDD4979905720332D60C2451 /* JSTrade-dummy.m in Sources */,
+				D2C55ECB0A7A277CC73D05AC55EA102B /* JSTrade.m in Sources */,
+				3FFC9ED2E7859C734A6B76E66550D5B1 /* JSTradeRuntime.m in Sources */,
+				7D07CD8D02EFEAD6F8478431D408641B /* JSTradeSourceShield.m in Sources */,
+				AD4A7450121303E335E16D2B15E25F61 /* NSJSONSerialization+JSTrade.m in Sources */,
+				AD712AAA5A77C6F3B82087F2FA839927 /* NSMethodSignature+JSTrade.m in Sources */,
+				E29339C5E6D3E200CF7C2D4EC91451CF /* WKWebView+JSTrade.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00A854B8FEF8C42585EB931D84790EFE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JSTrade;
+			target = 94BBA9DF10F9AA5E2907F6C8A6EE9932 /* JSTrade */;
+			targetProxy = 0A2B6156246151ACD86B9214E006B3BF /* PBXContainerItemProxy */;
+		};
+		01F629B4A8754BBE3CE1A7FF665480FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-JSTrade_Example";
+			target = 35D5EF8FD7B7A82C91256F2A09507ED8 /* Pods-JSTrade_Example */;
+			targetProxy = 5364A6AB9ADD2CC906DA76C4F8909CA2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		05DF210AC65EBB0E593AAF976B2C2177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		1F099128AF5CD75EA4632E6A4BC3C2EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F6840404FBFD9027E6CD8C32C92036E /* JSTrade.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JSTrade/JSTrade-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JSTrade/JSTrade-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JSTrade/JSTrade.modulemap";
+				PRODUCT_MODULE_NAME = JSTrade;
+				PRODUCT_NAME = JSTrade;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		421ECB1396280A8D83853C3DDBED1700 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		58B890B0B6DE2056E2EE0211C69AE228 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2964A7D3A31B09E0C8FB4F03BCEBC4A4 /* Pods-JSTrade_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JSTrade_Tests/Pods-JSTrade_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JSTrade_Tests/Pods-JSTrade_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		80C3A89E234D7CEACCBDD65730AB2236 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCA29D74E42FB37FF81AE7D89835CAA0 /* Pods-JSTrade_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JSTrade_Tests/Pods-JSTrade_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JSTrade_Tests/Pods-JSTrade_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		81F116FC4801DC4D508382674E12CB3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F6840404FBFD9027E6CD8C32C92036E /* JSTrade.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JSTrade/JSTrade-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JSTrade/JSTrade-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JSTrade/JSTrade.modulemap";
+				PRODUCT_MODULE_NAME = JSTrade;
+				PRODUCT_NAME = JSTrade;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B6D39A47D742960B26DE6FC7FC095656 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4AC505BB93B6032F21E142FEBCCC1BC /* Pods-JSTrade_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JSTrade_Example/Pods-JSTrade_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JSTrade_Example/Pods-JSTrade_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D7E0E4D1430E908788B1D9B23387F0AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C566C28CEAB558D8929D687E1194901 /* Pods-JSTrade_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JSTrade_Example/Pods-JSTrade_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JSTrade_Example/Pods-JSTrade_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2F60D9E8F3607A27BBC1D99086CFFE89 /* Build configuration list for PBXNativeTarget "Pods-JSTrade_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80C3A89E234D7CEACCBDD65730AB2236 /* Debug */,
+				58B890B0B6DE2056E2EE0211C69AE228 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FC108FE0F3D0CF2BCB60B1752DF29BB /* Build configuration list for PBXNativeTarget "Pods-JSTrade_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D39A47D742960B26DE6FC7FC095656 /* Debug */,
+				D7E0E4D1430E908788B1D9B23387F0AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46B58EF014C933CD916E35D876F8AA26 /* Build configuration list for PBXNativeTarget "JSTrade" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81F116FC4801DC4D508382674E12CB3D /* Debug */,
+				1F099128AF5CD75EA4632E6A4BC3C2EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				421ECB1396280A8D83853C3DDBED1700 /* Debug */,
+				05DF210AC65EBB0E593AAF976B2C2177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
