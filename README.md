@@ -17,11 +17,86 @@ JSTrade 是一个专为 iOS WKWebView 设计的 JavaScript 与 Objective-C/Swift
 - **Block 支持**: 原生 Block 可直接导出为 JavaScript 函数
 
 ### 🔧 主要组件
+
+```mermaid
+graph TB
+    subgraph "JSTrade 核心架构"
+        subgraph "JSExport 模块"
+            JEP[JSExportProtocol]
+            JEM[JSExportManager]
+            JECB[JSExportCallBack]
+        end
+        
+        subgraph "JSImport 模块"
+            JIP[JSImportProtocol]
+            JIM[JSImportModelManager]
+            JIS[JSImportScriptManager]
+        end
+        
+        subgraph "桥接层"
+            Bridge[消息桥接器]
+            Runtime[运行时管理]
+        end
+        
+        subgraph "扩展模块"
+            WKExt[WKWebView+JSTrade]
+            JSONExt[NSJSONSerialization+JSTrade]
+            MethodExt[NSMethodSignature+JSTrade]
+        end
+    end
+    
+    JEP --> JEM
+    JEM --> Bridge
+    JIP --> JIM
+    JIM --> Bridge
+    Bridge --> Runtime
+    Runtime --> WKExt
+    WKExt --> JSONExt
+    JSONExt --> MethodExt
+```
+
 - **JSExport**: 将原生对象和方法导出到 JavaScript 环境
 - **JSImport**: 将 JavaScript 对象和方法导入到原生环境
 - **WKWebView 扩展**: 提供便捷的 JavaScript 调用接口
 
 ## 实现原理
+
+### 整体架构
+
+JSTrade 采用分层架构设计，通过桥接模式实现 JavaScript 与原生代码的双向通信：
+
+```mermaid
+graph LR
+    subgraph "应用层"
+        App[原生应用]
+        Web[Web 页面]
+    end
+    
+    subgraph "通信层"
+        Bridge[JSTrade 桥接器]
+        Export[JSExport 导出器]
+        Import[JSImport 导入器]
+    end
+    
+    subgraph "系统层"
+        WKWeb[WKWebView]
+        WKUser[WKUserContentController]
+        Runtime[JavaScript 运行时]
+    end
+    
+    App -->|原生对象| Export
+    Export -->|协议定义| Bridge
+    Bridge -->|消息传递| WKUser
+    WKUser -->|注入脚本| Runtime
+    Runtime -->|JS 调用| Web
+    
+    Web -->|JS 对象| Import
+    Import -->|自动转发| Bridge
+    Bridge -->|方法调用| App
+    
+    WKWeb -->|配置| WKUser
+    WKUser -->|管理| Bridge
+```
 
 ### JSExport 机制
 JSTrade 通过以下方式实现原生对象到 JavaScript 的导出：
@@ -49,8 +124,44 @@ JavaScript 对象导入原生环境的核心原理：
 3. **命名空间**: 通过 `JSTradeImportSpaceNameSet` 设置访问命名空间
 
 ### 通信架构
+
+#### 数据流向图
+
+```mermaid
+sequenceDiagram
+    participant JS as JavaScript
+    participant WK as WKWebView
+    participant WKUC as WKUserContentController
+    participant JEM as JSExportManager
+    participant OC as 原生对象
+    
+    Note over JS,OC: JSExport 流程 (JavaScript 调用原生)
+    JS->>WK: 调用原生方法
+    WK->>WKUC: 消息传递
+    WKUC->>JEM: 查找处理方法
+    JEM->>OC: 调用对应方法
+    OC-->>JEM: 返回结果
+    JEM-->>WKUC: 结果回调
+    WKUC-->>WK: 执行回调
+    WK-->>JS: 返回数据
+    
+    Note over JS,OC: JSImport 流程 (原生调用 JavaScript)
+    OC->>JEM: 调用 JS 方法
+    JEM->>WKUC: 注入执行脚本
+    WKUC->>WK: 执行 JavaScript
+    WK->>JS: 调用 JS 函数
+    JS-->>WK: 返回结果
+    WK-->>WKUC: 结果传递
+    WKUC-->>JEM: 回调处理
+    JEM-->>OC: 返回数据
+```
+
+#### 组件关系图
+
 ```
 JavaScript ←→ WKUserContentController ←→ JSExportManager ←→ 原生对象
+    ↑              ↓
+WKWebView ←→ 消息桥接层 ←→ 协议映射层
 ```
 
 ## 使用示例
